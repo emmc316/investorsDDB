@@ -1,11 +1,12 @@
 package Model;
 
 public class User {
-
     private String user;
     private String passwd;
     private String hostname;
     private String port;
+
+    private boolean status;
 
     public User(String user, String passwd, String hostname, String port){
         this.user = user;
@@ -44,5 +45,13 @@ public class User {
 
     public void setPort(String port) {
         this.port = port;
+    }
+
+    public boolean status(){
+        return this.status;
+    }
+
+    public void setStatus(boolean x){
+        this.status = x;
     }
 }

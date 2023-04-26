@@ -4,23 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2030a18b-8e42-4d75-a8bf-f98031e9f425" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradlew" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradlew.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Controller/API.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Model/Connect.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Model/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/app/app.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/bdDistribuidas.sql" afterDir="false" />
+    <list default="true" id="2030a18b-8e42-4d75-a8bf-f98031e9f425" name="Changes" comment="A reorganizated project and a reconnection and now this app it's able to switch to another connection if main instances shut down.">
+      <change afterPath="$PROJECT_DIR$/src/main/java/Controller/AppController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Controller/ConnectDB.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/API.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Connect.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/app.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/app.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -135,14 +126,30 @@
       <workItem from="1680106152839" duration="1372000" />
       <workItem from="1681568545401" duration="1201000" />
       <workItem from="1681740745457" duration="18061000" />
-      <workItem from="1681826978862" duration="11667000" />
+      <workItem from="1681826978862" duration="12952000" />
+      <workItem from="1682107071897" duration="2284000" />
+      <workItem from="1682352969041" duration="9000" />
+      <workItem from="1682454006024" duration="15306000" />
     </task>
+    <task id="LOCAL-00001" summary="Project First Version: &#10;Inital implementation about mariadb jdbc driver with 2 connections in 2 mariadb instance">
+      <created>1681877811563</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1681877811563</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Project First Version: &#10;Inital implementation about mariadb jdbc driver with 2 connections in 2 mariadb instance" />
+    <MESSAGE value="A reorganizated project and a reconnection and now this app it's able to switch to another connection if main instances shut down." />
+    <option name="LAST_COMMIT_MESSAGE" value="A reorganizated project and a reconnection and now this app it's able to switch to another connection if main instances shut down." />
+  </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/InversorCode$Inversionistas.ic" NAME="Inversionistas Coverage Results" MODIFIED="1681877112326" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/InversorCode$Inversionistas.ic" NAME="Inversionistas Coverage Results" MODIFIED="1682482749842" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>
