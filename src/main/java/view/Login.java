@@ -8,7 +8,8 @@ public class Login extends JFrame{
         initComponentes();
         setTitle("login");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(400,400);
+        setSize(400,500);
+        setResizable(false);
         setVisible(true);
     }
 

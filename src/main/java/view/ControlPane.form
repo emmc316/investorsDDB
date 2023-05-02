@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="view.ControlPane">
+  <grid id="27dc6" binding="panelBorde" layout-manager="BorderLayout" hgap="10" vgap="10">
+    <constraints>
+      <xy x="20" y="20" width="549" height="400"/>
+    </constraints>
+    <properties/>
+    <border type="line">
+      <color color="-12828863"/>
+    </border>
+    <children>
+      <tabbedpane id="c6a1c" binding="panelPestañas">
+        <constraints border-constraint="Center"/>
+        <properties>
+          <tabPlacement value="2"/>
+        </properties>
+        <border type="none"/>
+        <children>
+          <grid id="1eaf1" binding="panelConsultar" layout-manager="BorderLayout" hgap="0" vgap="0">
+            <constraints>
+              <tabbedpane title="Consultar"/>
+            </constraints>
+            <properties/>
+            <border type="none"/>
+            <children>
+              <grid id="e7b57" binding="panelConsultarNorte" layout-manager="GridBagLayout">
+                <constraints border-constraint="North"/>
+                <properties/>
+                <border type="none"/>
+                <children>
+                  <component id="a1e85" class="javax.swing.JLabel" binding="etiquetaRFC">
+                    <constraints>
+                      <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+                      <gridbag top="5" left="0" bottom="5" right="0" weightx="0.0" weighty="0.0"/>
+                    </constraints>
+                    <properties>
+                      <font size="16" style="1"/>
+                      <text value="RFC Cliente: "/>
+                    </properties>
+                  </component>
+                  <component id="b0034" class="javax.swing.JTextField" binding="campoRFC">
+                    <constraints>
+                      <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                        <preferred-size width="150" height="-1"/>
+                      </grid>
+                      <gridbag top="5" left="0" bottom="5" right="5" weightx="0.0" weighty="0.0"/>
+                    </constraints>
+                    <properties>
+                      <columns value="13"/>
+                      <font size="16"/>
+                    </properties>
+                  </component>
+                  <component id="3d907" class="javax.swing.JLabel" binding="etiquetaFechaIncial">
+                    <constraints>
+                      <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+                      <gridbag top="5" left="5" bottom="5" right="0" weightx="0.0" weighty="0.0"/>
+                    </constraints>
+                    <properties>
+                      <font size="16" style="1"/>
+                      <text value="De la fecha: "/>
+                    </properties>
+                  </component>
+                  <component id="8778a" class="javax.swing.JLabel" binding="etiquetaFechaFinal">
+                    <constraints>
+                      <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+                      <gridbag top="5" left="5" bottom="5" right="0" weightx="0.0" weighty="0.0"/>
+                    </constraints>
+                    <properties>
+                      <font size="16" style="1"/>
+                      <text value="A la fecha: "/>
+                    </properties>
+                  </component>
+                  <grid id="d1167" binding="panelConsultarPor" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
+                    <constraints>
+                      <grid row="0" column="0" row-span="1" col-span="4" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                      <gridbag weightx="0.0" weighty="0.0"/>
+                    </constraints>
+                    <properties/>
+                    <border type="none"/>
+                    <children>
+                      <component id="ec8b8" class="javax.swing.JLabel" binding="etiquetaConsultarPor">
+                        <constraints/>
+                        <properties>
+                          <font size="16" style="1"/>
+                          <text value="Consultar por: "/>
+                        </properties>
+                      </component>
+                      <component id="ec617" class="javax.swing.JComboBox" binding="comboConsultarPor">
+                        <constraints/>
+                        <properties>
+                          <font size="16"/>
+                        </properties>
+                      </component>
+                    </children>
+                  </grid>
+                  <component id="9fb35" class="javax.swing.JButton" binding="botonConsultar">
+                    <constraints>
+                      <grid row="3" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                      <gridbag top="5" left="0" bottom="5" right="0" weightx="0.0" weighty="0.0"/>
+                    </constraints>
+                    <properties>
+                      <text value="Consultar"/>
+                    </properties>
+                  </component>
+                </children>
+              </grid>
+              <grid id="5c0b4" binding="panelConsultarCentro" layout-manager="BorderLayout" hgap="0" vgap="0">
+                <constraints border-constraint="Center"/>
+                <properties/>
+                <border type="none"/>
+                <children/>
+              </grid>
+            </children>
+          </grid>
+          <grid id="88844" binding="panelInsertar" layout-manager="BorderLayout" hgap="0" vgap="0">
+            <constraints>
+              <tabbedpane title="Insertar"/>
+            </constraints>
+            <properties/>
+            <border type="none"/>
+            <children/>
+          </grid>
+          <grid id="4ab0c" binding="panelActualizar" layout-manager="BorderLayout" hgap="0" vgap="0">
+            <constraints>
+              <tabbedpane title="Actualizar"/>
+            </constraints>
+            <properties/>
+            <border type="none"/>
+            <children/>
+          </grid>
+          <grid id="7d2d2" binding="panelEliminar" layout-manager="BorderLayout" hgap="0" vgap="0">
+            <constraints>
+              <tabbedpane title="Eliminar"/>
+            </constraints>
+            <properties/>
+            <border type="none"/>
+            <children/>
+          </grid>
+        </children>
+      </tabbedpane>
+    </children>
+  </grid>
+</form>

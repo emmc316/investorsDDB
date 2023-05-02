@@ -45,7 +45,7 @@
               <gridbag top="5" left="0" bottom="5" right="0" weightx="0.0" weighty="0.0"/>
             </constraints>
             <properties>
-              <columns value="13"/>
+              <columns value="12"/>
               <font size="14"/>
             </properties>
           </component>
@@ -67,7 +67,7 @@
               <gridbag top="5" left="0" bottom="5" right="0" weightx="0.0" weighty="0.0"/>
             </constraints>
             <properties>
-              <columns value="13"/>
+              <columns value="10"/>
               <font size="14"/>
             </properties>
           </component>
