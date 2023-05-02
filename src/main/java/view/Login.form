@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="view.Login">
+  <grid id="27dc6" binding="panelBorde" layout-manager="BorderLayout" hgap="10" vgap="10">
+    <constraints>
+      <xy x="20" y="20" width="500" height="435"/>
+    </constraints>
+    <properties>
+      <name value="panelBorde"/>
+    </properties>
+    <border type="line">
+      <color color="-12828863"/>
+    </border>
+    <children>
+      <grid id="a572a" binding="panelCentro" layout-manager="GridBagLayout">
+        <constraints border-constraint="Center"/>
+        <properties/>
+        <border type="none"/>
+        <children>
+          <component id="48890" class="javax.swing.JLabel" binding="etiquetaTitulo">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+              <gridbag top="10" left="0" bottom="5" right="0" weightx="0.0" weighty="0.0" ipadx="100"/>
+            </constraints>
+            <properties>
+              <font size="20" style="1"/>
+              <horizontalAlignment value="0"/>
+              <text value="Ingrese sus datos"/>
+            </properties>
+          </component>
+          <component id="35d46" class="javax.swing.JLabel" binding="etiquetaUsuario">
+            <constraints>
+              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+              <gridbag top="5" left="0" bottom="5" right="0" weightx="0.0" weighty="0.0"/>
+            </constraints>
+            <properties>
+              <font size="14" style="1"/>
+              <text value="Usuario: "/>
+            </properties>
+          </component>
+          <component id="4c065" class="javax.swing.JTextField" binding="campoUsuario">
+            <constraints>
+              <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                <preferred-size width="150" height="-1"/>
+              </grid>
+              <gridbag top="5" left="0" bottom="5" right="0" weightx="0.0" weighty="0.0"/>
+            </constraints>
+            <properties>
+              <columns value="13"/>
+              <font size="14"/>
+            </properties>
+          </component>
+          <component id="9534f" class="javax.swing.JLabel" binding="etiquetaPassword">
+            <constraints>
+              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+              <gridbag top="5" left="0" bottom="5" right="0" weightx="0.0" weighty="0.0"/>
+            </constraints>
+            <properties>
+              <font size="14" style="1"/>
+              <text value="Contraseña: "/>
+            </properties>
+          </component>
+          <component id="80c6d" class="javax.swing.JPasswordField" binding="campoPassword">
+            <constraints>
+              <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                <preferred-size width="150" height="-1"/>
+              </grid>
+              <gridbag top="5" left="0" bottom="5" right="0" weightx="0.0" weighty="0.0"/>
+            </constraints>
+            <properties>
+              <columns value="13"/>
+              <font size="14"/>
+            </properties>
+          </component>
+          <component id="42b32" class="javax.swing.JButton" binding="ingresarButton" default-binding="true">
+            <constraints>
+              <grid row="3" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+              <gridbag top="5" left="0" bottom="5" right="0" weightx="0.0" weighty="0.0"/>
+            </constraints>
+            <properties>
+              <text value="Ingresar"/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+      <grid id="fcd0e" binding="panelLogo" layout-manager="BorderLayout" hgap="0" vgap="5">
+        <constraints border-constraint="North"/>
+        <properties/>
+        <border type="line">
+          <color color="-12828863"/>
+        </border>
+        <children>
+          <component id="de84b" class="javax.swing.JLabel" binding="etiquetaLogo">
+            <constraints border-constraint="North"/>
+            <properties>
+              <horizontalAlignment value="0"/>
+              <icon value="imagenes/inversiones.png"/>
+              <text value=""/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+    </children>
+  </grid>
+</form>
