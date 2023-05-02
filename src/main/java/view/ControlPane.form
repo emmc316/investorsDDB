@@ -2,7 +2,7 @@
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="view.ControlPane">
   <grid id="27dc6" binding="panelBorde" layout-manager="BorderLayout" hgap="10" vgap="10">
     <constraints>
-      <xy x="20" y="20" width="549" height="400"/>
+      <xy x="20" y="20" width="719" height="400"/>
     </constraints>
     <properties/>
     <border type="line">
@@ -23,93 +23,273 @@
             <properties/>
             <border type="none"/>
             <children>
-              <grid id="e7b57" binding="panelConsultarNorte" layout-manager="GridBagLayout">
-                <constraints border-constraint="North"/>
+              <tabbedpane id="ba1e1" binding="panelPestañasConsultar">
+                <constraints border-constraint="Center"/>
                 <properties/>
                 <border type="none"/>
                 <children>
-                  <component id="a1e85" class="javax.swing.JLabel" binding="etiquetaRFC">
+                  <grid id="62893" binding="primeraPestaña" layout-manager="BorderLayout" hgap="0" vgap="0">
                     <constraints>
-                      <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
-                      <gridbag top="5" left="0" bottom="5" right="0" weightx="0.0" weighty="0.0"/>
-                    </constraints>
-                    <properties>
-                      <font size="16" style="1"/>
-                      <text value="RFC Cliente: "/>
-                    </properties>
-                  </component>
-                  <component id="b0034" class="javax.swing.JTextField" binding="campoRFC">
-                    <constraints>
-                      <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
-                        <preferred-size width="150" height="-1"/>
-                      </grid>
-                      <gridbag top="5" left="0" bottom="5" right="5" weightx="0.0" weighty="0.0"/>
-                    </constraints>
-                    <properties>
-                      <columns value="13"/>
-                      <font size="16"/>
-                    </properties>
-                  </component>
-                  <component id="3d907" class="javax.swing.JLabel" binding="etiquetaFechaIncial">
-                    <constraints>
-                      <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
-                      <gridbag top="5" left="5" bottom="5" right="0" weightx="0.0" weighty="0.0"/>
-                    </constraints>
-                    <properties>
-                      <font size="16" style="1"/>
-                      <text value="De la fecha: "/>
-                    </properties>
-                  </component>
-                  <component id="8778a" class="javax.swing.JLabel" binding="etiquetaFechaFinal">
-                    <constraints>
-                      <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
-                      <gridbag top="5" left="5" bottom="5" right="0" weightx="0.0" weighty="0.0"/>
-                    </constraints>
-                    <properties>
-                      <font size="16" style="1"/>
-                      <text value="A la fecha: "/>
-                    </properties>
-                  </component>
-                  <grid id="d1167" binding="panelConsultarPor" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
-                    <constraints>
-                      <grid row="0" column="0" row-span="1" col-span="4" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
-                      <gridbag weightx="0.0" weighty="0.0"/>
+                      <tabbedpane title="Inversionistas"/>
                     </constraints>
                     <properties/>
                     <border type="none"/>
                     <children>
-                      <component id="ec8b8" class="javax.swing.JLabel" binding="etiquetaConsultarPor">
-                        <constraints/>
-                        <properties>
-                          <font size="16" style="1"/>
-                          <text value="Consultar por: "/>
-                        </properties>
-                      </component>
-                      <component id="ec617" class="javax.swing.JComboBox" binding="comboConsultarPor">
-                        <constraints/>
-                        <properties>
-                          <font size="16"/>
-                        </properties>
-                      </component>
+                      <grid id="502f5" binding="primeraPestañaNorte" layout-manager="GridBagLayout">
+                        <constraints border-constraint="North"/>
+                        <properties/>
+                        <border type="none"/>
+                        <children>
+                          <component id="5dbc4" class="javax.swing.JLabel" binding="etiquetaConsultarPorInversionistas">
+                            <constraints>
+                              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                              <gridbag top="10" left="0" bottom="5" right="0" weightx="0.0" weighty="0.0"/>
+                            </constraints>
+                            <properties>
+                              <text value="Consultar por: "/>
+                            </properties>
+                          </component>
+                          <component id="5bd5a" class="javax.swing.JComboBox" binding="comboConsultarPorInversionistas">
+                            <constraints>
+                              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+                              <gridbag top="10" left="0" bottom="5" right="5" weightx="0.0" weighty="0.0"/>
+                            </constraints>
+                            <properties/>
+                          </component>
+                          <component id="5ee5e" class="javax.swing.JLabel" binding="etiquetaRFCInversionistas">
+                            <constraints>
+                              <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                              <gridbag top="10" left="5" bottom="5" right="0" weightx="0.0" weighty="0.0"/>
+                            </constraints>
+                            <properties>
+                              <text value="RFC inversionista: "/>
+                            </properties>
+                          </component>
+                          <component id="95879" class="javax.swing.JTextField" binding="campoRFCInversionistas">
+                            <constraints>
+                              <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                                <preferred-size width="150" height="-1"/>
+                              </grid>
+                              <gridbag top="10" left="0" bottom="5" right="0" weightx="0.0" weighty="0.0"/>
+                            </constraints>
+                            <properties>
+                              <columns value="10"/>
+                            </properties>
+                          </component>
+                          <component id="221d7" class="javax.swing.JButton" binding="botonConsultarInversionistas">
+                            <constraints>
+                              <grid row="1" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                              <gridbag top="5" left="0" bottom="5" right="0" weightx="0.0" weighty="0.0"/>
+                            </constraints>
+                            <properties>
+                              <text value="Consultar"/>
+                            </properties>
+                          </component>
+                        </children>
+                      </grid>
+                      <grid id="e4334" binding="primeraPestañaCentro" layout-manager="BorderLayout" hgap="0" vgap="0">
+                        <constraints border-constraint="Center"/>
+                        <properties/>
+                        <border type="none"/>
+                        <children>
+                          <scrollpane id="42cfe" binding="panelBarrasInversionistas">
+                            <constraints border-constraint="Center"/>
+                            <properties/>
+                            <border type="none"/>
+                            <children>
+                              <component id="54aff" class="javax.swing.JTable" binding="tablaInversionistas">
+                                <constraints/>
+                                <properties/>
+                              </component>
+                            </children>
+                          </scrollpane>
+                        </children>
+                      </grid>
                     </children>
                   </grid>
-                  <component id="9fb35" class="javax.swing.JButton" binding="botonConsultar">
+                  <grid id="c1633" binding="segundaPestaña" layout-manager="BorderLayout" hgap="0" vgap="0">
                     <constraints>
-                      <grid row="3" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                      <gridbag top="5" left="0" bottom="5" right="0" weightx="0.0" weighty="0.0"/>
+                      <tabbedpane title="Contratos"/>
                     </constraints>
-                    <properties>
-                      <text value="Consultar"/>
-                    </properties>
-                  </component>
+                    <properties/>
+                    <border type="none"/>
+                    <children>
+                      <grid id="e4260" binding="segundaPestañaNorte" layout-manager="GridBagLayout">
+                        <constraints border-constraint="North"/>
+                        <properties/>
+                        <border type="none"/>
+                        <children>
+                          <component id="a1924" class="javax.swing.JLabel" binding="etiquetaRFCContratos">
+                            <constraints>
+                              <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+                              <gridbag top="10" left="5" bottom="5" right="0" weightx="0.0" weighty="0.0"/>
+                            </constraints>
+                            <properties>
+                              <font/>
+                              <text value="RFC inversionista: "/>
+                            </properties>
+                          </component>
+                          <component id="94adc" class="javax.swing.JTextField" binding="campoRFCContratos">
+                            <constraints>
+                              <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                                <preferred-size width="150" height="-1"/>
+                              </grid>
+                              <gridbag top="10" left="0" bottom="5" right="5" weightx="0.0" weighty="0.0"/>
+                            </constraints>
+                            <properties>
+                              <columns value="13"/>
+                              <font size="16"/>
+                            </properties>
+                          </component>
+                          <component id="efb48" class="javax.swing.JLabel" binding="etiquetaConsultarPorContratos">
+                            <constraints>
+                              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                              <gridbag top="10" left="0" bottom="5" right="0" weightx="0.0" weighty="0.0"/>
+                            </constraints>
+                            <properties>
+                              <font/>
+                              <text value="Consultar por: "/>
+                            </properties>
+                          </component>
+                          <component id="1d865" class="javax.swing.JComboBox" binding="comboConsultarPorContratos">
+                            <constraints>
+                              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                              <gridbag top="10" left="0" bottom="5" right="5" weightx="0.0" weighty="0.0"/>
+                            </constraints>
+                            <properties>
+                              <font/>
+                            </properties>
+                          </component>
+                          <component id="60916" class="javax.swing.JButton" binding="botonConsultarContratos">
+                            <constraints>
+                              <grid row="1" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                              <gridbag top="5" left="0" bottom="5" right="0" weightx="0.0" weighty="0.0"/>
+                            </constraints>
+                            <properties>
+                              <text value="Consultar"/>
+                            </properties>
+                          </component>
+                        </children>
+                      </grid>
+                      <grid id="fb2ac" binding="segundaPestañaCentro" layout-manager="BorderLayout" hgap="0" vgap="0">
+                        <constraints border-constraint="Center"/>
+                        <properties/>
+                        <border type="none"/>
+                        <children>
+                          <scrollpane id="e1eb0" binding="panelBarrasContratos">
+                            <constraints border-constraint="Center"/>
+                            <properties/>
+                            <border type="none"/>
+                            <children>
+                              <component id="13b63" class="javax.swing.JTable" binding="tablaContratos">
+                                <constraints/>
+                                <properties/>
+                              </component>
+                            </children>
+                          </scrollpane>
+                        </children>
+                      </grid>
+                    </children>
+                  </grid>
+                  <grid id="9daab" binding="terceraPestaña" layout-manager="BorderLayout" hgap="0" vgap="0">
+                    <constraints>
+                      <tabbedpane title="Pagarés"/>
+                    </constraints>
+                    <properties/>
+                    <border type="none"/>
+                    <children>
+                      <grid id="2d8fa" binding="terceraPestañaNorte" layout-manager="GridBagLayout">
+                        <constraints border-constraint="North"/>
+                        <properties/>
+                        <border type="none"/>
+                        <children>
+                          <component id="46d0d" class="javax.swing.JLabel" binding="etiquetaConsultarPorPagares">
+                            <constraints>
+                              <grid row="0" column="0" row-span="2" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+                              <gridbag top="10" left="0" bottom="5" right="0" weightx="0.0" weighty="0.0"/>
+                            </constraints>
+                            <properties>
+                              <text value="Consultar por: "/>
+                            </properties>
+                          </component>
+                          <component id="1c0d3" class="javax.swing.JComboBox" binding="comboConsultarPorPagares">
+                            <constraints>
+                              <grid row="0" column="1" row-span="2" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                              <gridbag top="10" left="0" bottom="5" right="10" weightx="0.0" weighty="0.0"/>
+                            </constraints>
+                            <properties/>
+                          </component>
+                          <component id="a4ca3" class="javax.swing.JLabel" binding="etiquetaRFCPagares">
+                            <constraints>
+                              <grid row="0" column="2" row-span="2" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+                              <gridbag top="10" left="0" bottom="5" right="0" weightx="0.0" weighty="0.0"/>
+                            </constraints>
+                            <properties>
+                              <text value="RFC inversionista: "/>
+                            </properties>
+                          </component>
+                          <component id="35f91" class="javax.swing.JTextField" binding="campoRFCPagares">
+                            <constraints>
+                              <grid row="0" column="3" row-span="2" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                                <preferred-size width="150" height="-1"/>
+                              </grid>
+                              <gridbag top="10" left="0" bottom="5" right="10" weightx="0.0" weighty="0.0"/>
+                            </constraints>
+                            <properties>
+                              <columns value="10"/>
+                            </properties>
+                          </component>
+                          <component id="de5ab" class="javax.swing.JLabel" binding="etiquetaFechaInicialPagarre">
+                            <constraints>
+                              <grid row="0" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+                              <gridbag top="10" left="0" bottom="5" right="0" weightx="0.0" weighty="0.0"/>
+                            </constraints>
+                            <properties>
+                              <text value="De la fecha: "/>
+                            </properties>
+                          </component>
+                          <component id="4bdeb" class="javax.swing.JLabel" binding="etiquetaFechaFinalPagare">
+                            <constraints>
+                              <grid row="1" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+                              <gridbag top="5" left="0" bottom="5" right="0" weightx="0.0" weighty="0.0"/>
+                            </constraints>
+                            <properties>
+                              <text value="A la fecha: "/>
+                            </properties>
+                          </component>
+                          <component id="11e38" class="javax.swing.JButton" binding="botonConsultarPagares">
+                            <constraints>
+                              <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                              <gridbag top="5" left="0" bottom="5" right="0" weightx="0.0" weighty="0.0"/>
+                            </constraints>
+                            <properties>
+                              <text value="Consultar"/>
+                            </properties>
+                          </component>
+                        </children>
+                      </grid>
+                      <grid id="e10cf" binding="terceraPestañaCentro" layout-manager="BorderLayout" hgap="0" vgap="0">
+                        <constraints border-constraint="Center"/>
+                        <properties/>
+                        <border type="none"/>
+                        <children>
+                          <scrollpane id="6d04d" binding="panelBarrasPagares">
+                            <constraints border-constraint="Center"/>
+                            <properties/>
+                            <border type="none"/>
+                            <children>
+                              <component id="d5351" class="javax.swing.JTable" binding="tablaPagares">
+                                <constraints/>
+                                <properties/>
+                              </component>
+                            </children>
+                          </scrollpane>
+                        </children>
+                      </grid>
+                    </children>
+                  </grid>
                 </children>
-              </grid>
-              <grid id="5c0b4" binding="panelConsultarCentro" layout-manager="BorderLayout" hgap="0" vgap="0">
-                <constraints border-constraint="Center"/>
-                <properties/>
-                <border type="none"/>
-                <children/>
-              </grid>
+              </tabbedpane>
             </children>
           </grid>
           <grid id="88844" binding="panelInsertar" layout-manager="BorderLayout" hgap="0" vgap="0">

@@ -13,8 +13,8 @@ public class App {
 
     public static void main (String args[]){
         Appearance appearance = new Appearance();
-        //ControlPane pane = new ControlPane();
-        Login login = new Login();
+        ControlPane pane = new ControlPane();
+        //Login login = new Login();
         //AppController app = new AppController();
 
     }
