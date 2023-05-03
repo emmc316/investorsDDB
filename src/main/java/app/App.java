@@ -1,6 +1,7 @@
 package app;
 
 import controller.AppController;
+import controller.ComboSelectedController;
 import view.Appearance;
 import view.ControlPane;
 import view.Login;

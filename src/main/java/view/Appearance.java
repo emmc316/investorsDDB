@@ -25,7 +25,7 @@ public class Appearance {
         UIManager.put("Label.font", fontBold);
         UIManager.put("TextField.font", fontRegular);
         UIManager.put("ComboBox.font", fontRegular);
-        UIManager.put("TabbedPane.font", fontRegular);
+        UIManager.put("TabbedPane.font", new Font("Liberation Sans", 1, 16));
         UIManager.put("Table.font", fontRegular);
     }
 

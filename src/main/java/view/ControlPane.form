@@ -54,7 +54,9 @@
                               <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
                               <gridbag top="10" left="0" bottom="5" right="5" weightx="0.0" weighty="0.0"/>
                             </constraints>
-                            <properties/>
+                            <properties>
+                              <name value="comboInversionista"/>
+                            </properties>
                           </component>
                           <component id="5ee5e" class="javax.swing.JLabel" binding="etiquetaRFCInversionistas">
                             <constraints>
@@ -74,6 +76,7 @@
                             </constraints>
                             <properties>
                               <columns value="10"/>
+                              <enabled value="false"/>
                             </properties>
                           </component>
                           <component id="221d7" class="javax.swing.JButton" binding="botonConsultarInversionistas">
@@ -138,6 +141,7 @@
                             </constraints>
                             <properties>
                               <columns value="13"/>
+                              <enabled value="false"/>
                               <font size="16"/>
                             </properties>
                           </component>
@@ -158,6 +162,7 @@
                             </constraints>
                             <properties>
                               <font/>
+                              <name value="comboContrato"/>
                             </properties>
                           </component>
                           <component id="60916" class="javax.swing.JButton" binding="botonConsultarContratos">
@@ -217,7 +222,9 @@
                               <grid row="0" column="1" row-span="2" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                               <gridbag top="10" left="0" bottom="5" right="10" weightx="0.0" weighty="0.0"/>
                             </constraints>
-                            <properties/>
+                            <properties>
+                              <name value="comboPagare"/>
+                            </properties>
                           </component>
                           <component id="a4ca3" class="javax.swing.JLabel" binding="etiquetaRFCPagares">
                             <constraints>
@@ -237,6 +244,7 @@
                             </constraints>
                             <properties>
                               <columns value="10"/>
+                              <enabled value="false"/>
                             </properties>
                           </component>
                           <component id="de5ab" class="javax.swing.JLabel" binding="etiquetaFechaInicialPagarre">

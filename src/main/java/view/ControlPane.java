@@ -1,6 +1,7 @@
 package view;
 
 import com.toedter.calendar.JDateChooser;
+import controller.ComboSelectedController;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -10,11 +11,21 @@ public class ControlPane extends JFrame{
 
     public ControlPane(){
         initComponents();
+        addComboEvent();
         this.setTitle("Panel de control");
         this.setSize(1000,600);
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
+    }
+
+
+    ComboSelectedController comboController;
+    public void addComboEvent(){
+        comboController = new ComboSelectedController(this);
+        comboConsultarPorInversionistas.addItemListener(comboController);
+        comboConsultarPorContratos.addItemListener(comboController);
+        comboConsultarPorPagares.addItemListener(comboController);
     }
 
     private JPanel panelBorde;
@@ -57,11 +68,24 @@ public class ControlPane extends JFrame{
     private JScrollPane panelBarrasPagares;
     private JTable tablaPagares;
 
+    private JDateChooser fechaInicial;
+    private JDateChooser fechaFinal;
+
     private void initComponents(){
         this.setContentPane(panelBorde);
         addComboElements();
         addTableColumns();
         addDateChooser();
+        addIcons();
+    }
+
+    private void addIcons(){
+        String ruta = getClass().getResource("").getPath().replace("view/","imagenes/");
+        System.out.println(ruta);
+        panelPestañas.setIconAt(0,new ImageIcon(ruta + "consulta.png"));
+        panelPestañas.setIconAt(1,new ImageIcon(ruta + "insertar.png"));
+        panelPestañas.setIconAt(2,new ImageIcon(ruta + "actualizar.png"));
+        panelPestañas.setIconAt(3,new ImageIcon(ruta + "eliminar.png"));
     }
 
     private void addComboElements() {
@@ -111,8 +135,8 @@ public class ControlPane extends JFrame{
     }
 
     public void addDateChooser(){
-        JDateChooser fechaInicial = new JDateChooser("dd/MM/yyyy", "##/##/####", '_');
-        JDateChooser fechaFinal = new JDateChooser("dd/MM/yyyy", "##/##/####", '_');
+        fechaInicial = new JDateChooser("dd/MM/yyyy", "##/##/####", '_');
+        fechaFinal = new JDateChooser("dd/MM/yyyy", "##/##/####", '_');
         GridBagConstraints gb = new GridBagConstraints();
         gb.gridx = 6;
         gb.gridy = 0;
@@ -126,5 +150,28 @@ public class ControlPane extends JFrame{
         gb.ipadx = 30;
         gb.anchor = GridBagConstraints.WEST;
         terceraPestañaNorte.add(fechaFinal, gb);
+        fechaInicial.setEnabled(false);
+        fechaFinal.setEnabled(false);
+    }
+
+    public void enableComponents(int value, boolean enable){
+        switch (value){
+            case 1:
+                campoRFCInversionistas.setEnabled(enable);
+                break;
+            case 2:
+                campoRFCContratos.setEnabled(enable);
+                break;
+            case 3:
+                campoRFCPagares.setEnabled(enable);
+                break;
+            case 4:
+                fechaInicial.setEnabled(enable);
+                fechaFinal.setEnabled(enable);
+        }
+    }
+
+    public JTextField getCampoRFCInversionistas(){
+        return campoRFCInversionistas;
     }
 }
