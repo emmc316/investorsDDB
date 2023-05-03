@@ -1,11 +1,4 @@
 package model;
-
-import org.mariadb.jdbc.ClientPreparedStatement;
-import org.mariadb.jdbc.Connection;
-import org.mariadb.jdbc.Statement;
-import org.mariadb.jdbc.client.result.Result;
-
-import java.sql.SQLException;
 import java.util.Arrays;
 
 public class Operation {

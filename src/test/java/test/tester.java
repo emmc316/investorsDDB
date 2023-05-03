@@ -14,11 +14,14 @@ public class tester {
         AppController api = new AppController();
         api.setUsers();
 
-        System.out.println(api.getUsers().get(0).getHostname());
-        System.out.println(InetAddress.getLocalHost().getHostName());
-
-        if(api.getUsers().get(0).getHostname().equals(InetAddress.getLocalHost().getHostName())){
-            System.out.println("coincide");
+        int pos = api.getUserByHostname();
+        api.connect(pos);
+        if(api.getUsers().get(pos).getHostname().equals(InetAddress.getLocalHost().getHostName())){
+            for(;;){
+                if(!api.connectionIsDown()){
+                    api.menu(pos);
+                }
+            }
         }
 
     }

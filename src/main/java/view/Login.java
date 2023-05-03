@@ -1,8 +1,12 @@
 package view;
 
-import javax.swing.*;
+import controller.LoginController;
 
-public class Login extends JFrame{
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class Login extends JFrame {
 
     public Login(){
         initComponentes();
@@ -17,6 +21,14 @@ public class Login extends JFrame{
     setContentPane(panelBorde);
     }
 
+    public void addButtonEvent(ActionListener AppController){
+    this.ingresarButton.addActionListener(AppController);
+    }
+
+    public String getUser(){return this.campoUsuario.getText();}
+    public String getPass(){
+        return String.valueOf(this.campoPassword.getPassword());
+    }
     private JPanel panelBorde;
     private JPanel panelCentro;
     private JLabel etiquetaTitulo;
@@ -27,6 +39,4 @@ public class Login extends JFrame{
     private JPanel panelLogo;
     private JLabel etiquetaLogo;
     private JButton ingresarButton;
-
-
 }

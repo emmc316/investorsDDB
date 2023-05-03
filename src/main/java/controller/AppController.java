@@ -1,29 +1,31 @@
 package controller;
-import model.IOperations;
-import model.Operation;
+import model.*;
 import org.mariadb.jdbc.ClientPreparedStatement;
 import org.mariadb.jdbc.Statement;
 import org.mariadb.jdbc.client.result.Result;
 import view.Login;
-import model.User;
+import view.Appearance;
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.net.UnknownHostException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.net.InetAddress;
 
-public class AppController implements IOperations {
+public class AppController implements IOperations, ActionListener {
     ArrayList<User> users = new ArrayList<>();
+    ArrayList<Inversor> inversors = new ArrayList<Inversor>();
+    ArrayList<Branch> branches = new ArrayList<Branch>();
+    ArrayList<Rate> rates = new ArrayList<Rate>();
+    ArrayList<Contract> contracts = new ArrayList<Contract>();
+    ArrayList<PromissoryNote> promisossorysNotes = new ArrayList<PromissoryNote>();
     ConnectDB connectDB = new ConnectDB();
-
     Operations operations = new Operations();
+    Login login;
     public AppController(){
-        setUsers();
-        int userPos = getUserByHostname();
-        connect(userPos);
-        for(;;) {
-            menu(userPos);
-        }
+            setUsers();
     }
 
     public void setUsers(){
@@ -62,6 +64,16 @@ public class AppController implements IOperations {
     /*Only on debug actions*/
     public void debugConnection(){
     this.connectDB.debugConnection();
+    }
+
+
+    public boolean login(int pos,String name, String passwd) {
+        if(users.get(pos).getUser().equals(name) && users.get(pos).getPasswd().equals(passwd)) {
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 
     @Override
@@ -112,7 +124,7 @@ public class AppController implements IOperations {
     }
 
     @Override
-    public void SelectContractsByClv(int pos,String clv) {
+    public void selectContractsByClv(int pos,String clv) {
         if (operations.getOperations().get(Operations.SELECT_CONTRACTS_BY_CLV).validateQuerieByNode(users.get(pos).getNode())) {
             try {
                 ClientPreparedStatement preparedStatement = (ClientPreparedStatement) connectDB.connection.prepareStatement(operations.getOperations().get(Operations.SELECT_CONTRACTS_BY_CLV).getQuery());
@@ -190,6 +202,13 @@ public class AppController implements IOperations {
                 connectDB.connect();
                 connectDB.debugConnection();
                 flag = true;
+
+                if(!connectDB.checkConnectiontoNode()){
+                    connectDB.disconnect();
+                    connectDB.setUser(users.get(2));
+                    connectDB.connect();
+                    connectDB.debugConnection();
+                }
             }
 
         }
@@ -207,11 +226,11 @@ public class AppController implements IOperations {
             do {
                 if(!connectionIsDown()) {
                     Scanner sc = new Scanner(System.in);
-                    System.out.println("Type an option: 1. Select Inversors, 2.Select an specific Inverson 3. Select pagares by date, 4 Select Pagaras by a range of dates");
+                    System.out.println("Type an option: 1. Select Inversors, 2.Select an specific Inversor by RFC 3.Select Contracts 4.Select Contracts by clv 5. Select promisorys notes 6. Select Promisorys by a date 7. Select promisorys by dates 8.Exit");
                     op = sc.nextInt();
                     switch (op) {
                         case 1: {
-                            System.out.println("Cosnults: Inversos");
+                            System.out.println("Consults: Inversos");
                             selectInversors(pos);
                             break;
                         }
@@ -223,24 +242,54 @@ public class AppController implements IOperations {
                         }
 
                         case 3: {
-                            System.out.println("Type a date, example 2012-12-21:");
-                            selectPromissoryByDate(pos,sc.next());
+                            selectContracts(pos);
                             break;
                         }
 
                         case 4: {
+                            System.out.println("Type a CLV to Search:");
+                            selectContractsByClv(pos,sc.next());
+                            break;
+                        }
+                        case 5: {
+                            selectPromissorys(pos);
+                            break;
+                        }
+
+                        case 6:{
+                            System.out.println("Type a date, example 2012-12-21:");
+                            selectPromissoryByDate(pos,sc.next());
+                        }
+
+                        case 7: {
                             System.out.println("Type two dates a date example 2012-12-21 2013-01-04: ");
                             selectByPromissoryDates(pos,sc.next(),sc.next());
                             break;
                         }
 
-                        case 5: {
+                        case 8: {
                             System.exit(1);
                         }
                     }
                 }
-            } while (op == 5);
+            } while (op == 8);
         }
     }
 
+    @Override
+    public void actionPerformed(ActionEvent e) {
+
+        JComponent component = (JComponent) e.getSource();
+        switch (component.getName()){
+            case "loginButton":{
+                System.out.println(this.login.getUser()+" "+this.login.getPass());
+                System.out.println();
+                if(login(this.getUserByHostname(),this.login.getUser(),this.login.getUser())){
+                    System.out.println("Logueado");
+                }
+
+                break;
+            }
+        }
+    }
 }

@@ -7,7 +7,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Operations {
-
     public final static String SELECT_INVERSORS = "selectInversors";
     public final static String SELECT_INVERSORS_BY_RFC = "selectInversorsByRFC";
     public final static String SELECT_CONTRACTS = "selectContracts";
@@ -27,7 +26,7 @@ public class Operations {
                 new String[]{Operation.NODE_A}));
 
         operations.put(Operations.SELECT_CONTRACTS,new Operation(
-                "SELECT * FROM contratos",
+                "SELECT * FROM contrato",
                 new String[]{Operation.NODE_A,Operation.NODE_B,Operation.NODE_C}));
 
         operations.put(Operations.SELECT_CONTRACTS_BY_CLV,new Operation(
