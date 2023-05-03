@@ -1,9 +1,9 @@
 DROP DATABASE IF EXISTS inversiones;
 
 CREATE DATABASE inversiones;
-/*
-CREATE USER 'dba'@'%' IDENTIFIED BY '12345';
-GRANT ALL PRIVILEGES ON *.* TO 'dba'@'%';
+
+--CREATE USER 'dba'@'%' IDENTIFIED BY '12345';
+--GRANT ALL PRIVILEGES ON *.* TO 'dba'@'%';
 
 --CREATE ROLE ejecutivo;
 --GRANT SELECT, INSERT, UPDATE, DELETE ON inversiones.inversionista TO ejecutivo;

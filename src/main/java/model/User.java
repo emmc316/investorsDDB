@@ -1,18 +1,22 @@
 package model;
 
 public class User {
+
+    public final static String NodeA = "A";
+    public final static String NodeB = "B";
+    public final static String NodeC = "C";
     private String user;
     private String passwd;
     private String hostname;
     private String port;
+    private String node;
 
-    private boolean status;
-
-    public User(String user, String passwd, String hostname, String port){
+    public User(String user, String passwd, String hostname, String port, String node){
         this.user = user;
         this.passwd = passwd;
-        this.hostname = hostname;
+        this.hostname = hostname.toUpperCase();
         this.port = port;
+        this.node = node;
     }
 
     public String getUser() {
@@ -36,7 +40,7 @@ public class User {
     }
 
     public void setHostname(String hostname) {
-        this.hostname = hostname;
+        this.hostname = hostname.toUpperCase();
     }
 
     public String getPort() {
@@ -47,11 +51,11 @@ public class User {
         this.port = port;
     }
 
-    public boolean status(){
-        return this.status;
+    public String getNode() {
+        return node;
     }
 
-    public void setStatus(boolean x){
-        this.status = x;
+    public void setNode(String node) {
+        this.node = node;
     }
 }

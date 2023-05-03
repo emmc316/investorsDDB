@@ -3,7 +3,6 @@ package controller;
 import model.User;
 import org.mariadb.jdbc.*;
 import java.sql.SQLException;
-import java.util.ArrayList;
 public class ConnectDB {
     String driver;
     User user;
@@ -17,7 +16,6 @@ public class ConnectDB {
     public void connect(){
         try {
         this.driver = "jdbc:mariadb://" + this.user.getHostname() + ":" + this.user.getPort() + "/inversiones" + "?user=" + this.user.getUser() + "&password=" + this.user.getPasswd();
-        this.user.setStatus(true);
         mariaDbDataSource.setUrl(driver);
         this.connection = (Connection) mariaDbDataSource.getConnection();
             }
