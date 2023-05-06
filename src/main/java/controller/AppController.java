@@ -1,31 +1,37 @@
 package controller;
 import model.*;
-import org.mariadb.jdbc.ClientPreparedStatement;
-import org.mariadb.jdbc.Statement;
-import org.mariadb.jdbc.client.result.Result;
+import view.ControlPane;
 import view.Login;
 import view.Appearance;
-import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+
 import java.net.UnknownHostException;
-import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Scanner;
 import java.net.InetAddress;
 
-public class AppController implements IOperations, ActionListener {
-    ArrayList<User> users = new ArrayList<>();
-    ArrayList<Inversor> inversors = new ArrayList<Inversor>();
-    ArrayList<Branch> branches = new ArrayList<Branch>();
-    ArrayList<Rate> rates = new ArrayList<Rate>();
-    ArrayList<Contract> contracts = new ArrayList<Contract>();
-    ArrayList<PromissoryNote> promisossorysNotes = new ArrayList<PromissoryNote>();
-    ConnectDB connectDB = new ConnectDB();
-    Operations operations = new Operations();
+public class AppController {
+
     Login login;
+    LoginController lgc;
+    ControlPane controlPane;
+    ArrayList<User> users = new ArrayList<>();
     public AppController(){
             setUsers();
+            Appearance appearance = new Appearance();
+            int pos = getUserByHostname();
+            login = new Login();
+            lgc = new LoginController(users.get(pos).getUser(),users.get(pos).getPasswd(),login);
+            login.addButtonEvent(lgc);
+           for(;;) {
+               System.out.println(login.isLogged());
+               if(login.isLogged()){
+                   System.out.println(login.isLogged());
+                   login.dispose();
+                   controlPane = new ControlPane(users.get(pos));
+                   break;
+               }
+           }
+           ControlPanelController controlPanelController = new ControlPanelController(controlPane);
+
     }
 
     public void setUsers(){
@@ -33,15 +39,15 @@ public class AppController implements IOperations, ActionListener {
         User nodoB = new User("nodoB","1234","irving","3306", User.NodeB);
         User nodoC = new User("nodoC","1234","parra","3306", User.NodeC);
         //only for debug  User nodoX = new User("NodoX", "12345", "emmcdev", "3306");
-        this.users.add(nodoA);
-        this.users.add(nodoB);
+        this.users.add((nodoA));
+        this.users.add((nodoB));
+        this.users.add((nodoC));
     }
-
     public int getUserByHostname(){
         int pos = 0, i = 0;
         for (User u:users) {
             try {
-                if (u.getHostname().equals(InetAddress.getLocalHost().getHostName())) {
+                if (u.getHostname().equals(InetAddress.getLocalHost().getHostName().toLowerCase())) {
                     pos = i;
                     break;
                 }
@@ -52,244 +58,8 @@ public class AppController implements IOperations, ActionListener {
         }
         return pos;
     }
-    public void connect(int id){
-        connectDB.setUser(users.get(id));
-        connectDB.connect();
-    }
-
-    public void disconnect(){
-        this.connectDB.disconnect();
-    }
-
-    /*Only on debug actions*/
-    public void debugConnection(){
-    this.connectDB.debugConnection();
-    }
-
-
-    public boolean login(int pos,String name, String passwd) {
-        if(users.get(pos).getUser().equals(name) && users.get(pos).getPasswd().equals(passwd)) {
-            return true;
-        }
-        else {
-            return false;
-        }
-    }
-
-    @Override
-    public void selectInversors(int pos){
-        if(operations.getOperations().get(Operations.SELECT_INVERSORS).validateQuerieByNode(users.get(pos).getNode())) {
-            try {
-                Statement stmt = connectDB.connection.createStatement();
-                Result rs = (Result) stmt.executeQuery(operations.getOperations().get(Operations.SELECT_INVERSORS).getQuery());
-                while (rs.next()) {
-                    System.out.println(rs.getString(1) + " " + rs.getString(2) + " " + rs.getString(3) + " " + " " + rs.getString(4) + " " + rs.getString(5) + " " + rs.getBoolean(6));
-                }
-
-            } catch (SQLException e) {
-                System.out.println(e);
-            }
-        }
-    }
-
-    @Override
-    public void selectInversorByRFC(int pos,String rfc) {
-        if (operations.getOperations().get(Operations.SELECT_INVERSORS_BY_RFC).validateQuerieByNode(users.get(pos).getNode())) {
-            try {
-                ClientPreparedStatement preparedStatement = (ClientPreparedStatement) connectDB.connection.prepareStatement(operations.getOperations().get(Operations.SELECT_INVERSORS_BY_RFC).getQuery());
-                preparedStatement.setString(1, rfc);
-                Result rs = (Result) preparedStatement.executeQuery();
-                while (rs.next()) {
-                    System.out.println(rs.getString(1) + " " + rs.getString(2) + " " + rs.getString(3) + " " + rs.getString(4) + " " + rs.getString(5) + " " + rs.getString(6));
-                }
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
-    }
-
-    @Override
-    public void selectContracts(int pos) {
-        if (operations.getOperations().get(Operations.SELECT_CONTRACTS).validateQuerieByNode(users.get(pos).getNode())) {
-            try {
-                Statement stmt = connectDB.connection.createStatement();
-                Result rs = (Result) stmt.executeQuery(operations.getOperations().get(Operations.SELECT_CONTRACTS).getQuery());
-                while (rs.next()) {
-                    System.out.println(rs.getString(1) + " " + rs.getString(2) + " " + rs.getString(3) + " " + " " + rs.getString(4) + " " + rs.getString(5));
-                }
-            } catch (SQLException e) {
-                System.out.println(e);
-            }
-        }
-    }
-
-    @Override
-    public void selectContractsByClv(int pos,String clv) {
-        if (operations.getOperations().get(Operations.SELECT_CONTRACTS_BY_CLV).validateQuerieByNode(users.get(pos).getNode())) {
-            try {
-                ClientPreparedStatement preparedStatement = (ClientPreparedStatement) connectDB.connection.prepareStatement(operations.getOperations().get(Operations.SELECT_CONTRACTS_BY_CLV).getQuery());
-                preparedStatement.setString(1, clv);
-                Result rs = (Result) preparedStatement.executeQuery();
-                while (rs.next()) {
-                    System.out.println(rs.getString(1) + " " + rs.getString(2) + " " + rs.getString(3) + " " + rs.getString(4) + " " + rs.getString(5));
-                }
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
-    }
-
-    @Override
-    public void selectPromissorys(int pos) {
-        if (operations.getOperations().get(Operations.SELECT_PROMISORYS).validateQuerieByNode(users.get(pos).getNode())) {
-            try {
-                ClientPreparedStatement preparedStatement = (ClientPreparedStatement) connectDB.connection.prepareStatement(operations.getOperations().get(Operations.SELECT_PROMISORYS).getQuery());
-                Result rs = (Result) preparedStatement.executeQuery();
-                while (rs.next()) {
-                    System.out.println(rs.getString(1) + " " + rs.getString(2) + " " + rs.getString(3) + " " + rs.getString(4) + " " + rs.getString(5) + " " + rs.getString(6));
-                }
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
-    }
-
-    @Override
-    public void selectPromissoryByDate(int pos,String date) {
-        if(operations.getOperations().get(Operations.SELECT_PROMISORY_BY_DATE).validateQuerieByNode(users.get(pos).getNode())) {
-        try {
-            ClientPreparedStatement preparedStatement = (ClientPreparedStatement) connectDB.connection.prepareStatement(operations.getOperations().get(Operations.SELECT_PROMISORY_BY_DATE).getQuery());
-            preparedStatement.setString(1, date);
-            Result rs = (Result) preparedStatement.executeQuery();
-            while (rs.next()) {
-                System.out.println(rs.getString(1)+" "+rs.getString(2)+" "+rs.getString(3)+" "+rs.getString(4)+" "+rs.getString(5)+" "+rs.getString(6));
-            }
-        }catch (SQLException e){
-            e.printStackTrace();
-        }
-      }
-    }
-
-    @Override
-    public void selectByPromissoryDates(int pos,String date1, String date2) {
-        if (operations.getOperations().get(Operations.SELECT_PROMISORYS_BY_DATES).validateQuerieByNode(users.get(pos).getNode())) {
-            try {
-                ClientPreparedStatement preparedStatement = (ClientPreparedStatement) connectDB.connection.prepareStatement(operations.getOperations().get(Operations.SELECT_PROMISORYS_BY_DATES).getQuery());
-                preparedStatement.setString(1, date1);
-                preparedStatement.setString(2, date2);
-                Result rs = (Result) preparedStatement.executeQuery();
-                while (rs.next()) {
-                    System.out.println(rs.getString(1) + " " + rs.getString(2) + " " + rs.getString(3) + " " + rs.getString(4) + " " + rs.getString(5) + " " + rs.getString(6));
-                }
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
-    }
-
-    public boolean connectionIsDown(){
-        boolean flag = false;
-        if(!connectDB.checkConnectiontoNode()){
-            connectDB.disconnect();
-            connectDB.setUser(users.get(1));
-            connectDB.connect();
-            connectDB.debugConnection();
-            flag = true;
-
-            if(!connectDB.checkConnectiontoNode()){
-                connectDB.disconnect();
-                connectDB.setUser(users.get(0));
-                connectDB.connect();
-                connectDB.debugConnection();
-                flag = true;
-
-                if(!connectDB.checkConnectiontoNode()){
-                    connectDB.disconnect();
-                    connectDB.setUser(users.get(2));
-                    connectDB.connect();
-                    connectDB.debugConnection();
-                }
-            }
-
-        }
-        return flag;
-    }
-
     public ArrayList<User> getUsers() {
         return users;
     }
-
-    public void menu(int pos){
-
-        int op = 0;
-        if(!connectionIsDown()) {
-            do {
-                if(!connectionIsDown()) {
-                    Scanner sc = new Scanner(System.in);
-                    System.out.println("Type an option: 1. Select Inversors, 2.Select an specific Inversor by RFC 3.Select Contracts 4.Select Contracts by clv 5. Select promisorys notes 6. Select Promisorys by a date 7. Select promisorys by dates 8.Exit");
-                    op = sc.nextInt();
-                    switch (op) {
-                        case 1: {
-                            System.out.println("Consults: Inversos");
-                            selectInversors(pos);
-                            break;
-                        }
-
-                        case 2: {
-                            System.out.println("Type an RFC to Search:");
-                            selectInversorByRFC(pos,sc.next());
-                            break;
-                        }
-
-                        case 3: {
-                            selectContracts(pos);
-                            break;
-                        }
-
-                        case 4: {
-                            System.out.println("Type a CLV to Search:");
-                            selectContractsByClv(pos,sc.next());
-                            break;
-                        }
-                        case 5: {
-                            selectPromissorys(pos);
-                            break;
-                        }
-
-                        case 6:{
-                            System.out.println("Type a date, example 2012-12-21:");
-                            selectPromissoryByDate(pos,sc.next());
-                        }
-
-                        case 7: {
-                            System.out.println("Type two dates a date example 2012-12-21 2013-01-04: ");
-                            selectByPromissoryDates(pos,sc.next(),sc.next());
-                            break;
-                        }
-
-                        case 8: {
-                            System.exit(1);
-                        }
-                    }
-                }
-            } while (op == 8);
-        }
     }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-
-        JComponent component = (JComponent) e.getSource();
-        switch (component.getName()){
-            case "loginButton":{
-                System.out.println(this.login.getUser()+" "+this.login.getPass());
-                System.out.println();
-                if(login(this.getUserByHostname(),this.login.getUser(),this.login.getUser())){
-                    System.out.println("Logueado");
-                }
-
-                break;
-            }
-        }
-    }
-}

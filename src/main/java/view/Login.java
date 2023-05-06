@@ -1,13 +1,12 @@
 package view;
 
 import controller.LoginController;
-
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class Login extends JFrame {
-
+    private boolean logged = false;
     public Login(){
         initComponentes();
         setTitle("login");
@@ -20,15 +19,23 @@ public class Login extends JFrame {
     private void initComponentes(){
     setContentPane(panelBorde);
     }
+    public boolean isLogged() {
+        return logged;
+    }
+    public void setLogged(boolean logged) {
+        this.logged = logged;
+    }
 
-    public void addButtonEvent(ActionListener AppController){
-    this.ingresarButton.addActionListener(AppController);
+    public void addButtonEvent(ActionListener loginController){
+    this.ingresarButton.addActionListener(loginController);
     }
 
     public String getUser(){return this.campoUsuario.getText();}
     public String getPass(){
         return String.valueOf(this.campoPassword.getPassword());
     }
+
+
     private JPanel panelBorde;
     private JPanel panelCentro;
     private JLabel etiquetaTitulo;

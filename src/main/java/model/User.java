@@ -40,7 +40,7 @@ public class User {
     }
 
     public void setHostname(String hostname) {
-        this.hostname = hostname.toUpperCase();
+        this.hostname = hostname.toLowerCase();
     }
 
     public String getPort() {
@@ -57,5 +57,21 @@ public class User {
 
     public void setNode(String node) {
         this.node = node;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (!(obj instanceof User)) {
+            return false;
+        }
+        User otherUser = (User) obj;
+        return this.user.equals(otherUser.getUser()) &&
+                this.passwd.equals(otherUser.getPasswd()) &&
+                this.hostname.equals(otherUser.getHostname()) &&
+                this.port.equals(otherUser.getPort()) &&
+                this.node.equals(otherUser.getNode());
     }
 }

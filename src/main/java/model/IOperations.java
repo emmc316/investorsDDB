@@ -2,10 +2,10 @@ package model;
 
 public interface IOperations {
     public void selectInversors(int pos);
-    public void selectInversorByRFC(int pos,String rfc);
+    public Inversor selectInversorByRFC(int pos,String rfc);
     public void selectContracts(int pos);
-    public void selectContractsByClv(int pos,String clv);
+    public Contract selectContractsByClv(int pos,String rfc);
     public void selectPromissorys(int pos);
-    public void selectPromissoryByDate(int pos,String date);
+    public  void selectPromissorysByRFC(int pos, String rfc);
     public void selectByPromissoryDates(int pos,String date1, String date2);
 }

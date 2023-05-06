@@ -1,17 +1,20 @@
 package view;
 
 import com.toedter.calendar.JDateChooser;
-import controller.ComboSelectedController;
+import controller.ControlPanelController;
+import model.*;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 
-public class ControlPane extends JFrame{
+public class ControlPane extends JFrame {
 
-    public ControlPane(){
+    private User node;
+    public ControlPane(User node){
+        this.node = node;
         initComponents();
-        addComboEvent();
+        addEvents();
         this.setTitle("Panel de control");
         this.setSize(1000,600);
         this.setLocationRelativeTo(null);
@@ -20,12 +23,15 @@ public class ControlPane extends JFrame{
     }
 
 
-    ComboSelectedController comboController;
-    public void addComboEvent(){
-        comboController = new ComboSelectedController(this);
-        comboConsultarPorInversionistas.addItemListener(comboController);
-        comboConsultarPorContratos.addItemListener(comboController);
-        comboConsultarPorPagares.addItemListener(comboController);
+    ControlPanelController controlPanelController;
+    public void addEvents(){
+        controlPanelController = new ControlPanelController(this);
+        comboConsultarPorInversionistas.addItemListener(controlPanelController);
+        comboConsultarPorContratos.addItemListener(controlPanelController);
+        comboConsultarPorPagares.addItemListener(controlPanelController);
+        botonConsultarInversionistas.addActionListener(controlPanelController);
+        botonConsultarContratos.addActionListener(controlPanelController);
+        botonConsultarPagares.addActionListener(controlPanelController);
     }
 
     private JPanel panelBorde;
@@ -71,8 +77,17 @@ public class ControlPane extends JFrame{
     private JDateChooser fechaInicial;
     private JDateChooser fechaFinal;
 
+    private DefaultTableModel modelInversionista;
+    private DefaultTableModel modelContrato;
+    private DefaultTableModel modelPagare;
+
+
     private void initComponents(){
         this.setContentPane(panelBorde);
+        this.botonConsultarInversionistas.setName("inversors");
+        this.botonConsultarContratos.setName("contracts");
+        this.botonConsultarPagares.setName("promissoryNotes");
+
         addComboElements();
         addTableColumns();
         addDateChooser();
@@ -104,10 +119,12 @@ public class ControlPane extends JFrame{
         modelPagares.addElement("RFC de un cliente");
         modelPagares.addElement("En un intervalo de fechas");
         comboConsultarPorPagares.updateUI();
+
+
     }
 
     private void addTableColumns(){
-        DefaultTableModel modelInversionista = (DefaultTableModel) tablaInversionistas.getModel();
+        modelInversionista = (DefaultTableModel) tablaInversionistas.getModel();
         modelInversionista.addColumn("RFC");
         modelInversionista.addColumn("Nombre");
         modelInversionista.addColumn("Telefono");
@@ -116,7 +133,7 @@ public class ControlPane extends JFrame{
         modelInversionista.addColumn("Tipo persona");
         tablaInversionistas.updateUI();
 
-        DefaultTableModel modelContrato = (DefaultTableModel) tablaContratos.getModel();
+        modelContrato = (DefaultTableModel) tablaContratos.getModel();
         modelContrato.addColumn("Clave contrato");
         modelContrato.addColumn("Clave sucursal");
         modelContrato.addColumn("RFC");
@@ -124,7 +141,7 @@ public class ControlPane extends JFrame{
         modelContrato.addColumn("Status");
         tablaContratos.updateUI();
 
-        DefaultTableModel modelPagare = (DefaultTableModel) tablaPagares.getModel();
+        modelPagare = (DefaultTableModel) tablaPagares.getModel();
         modelPagare.addColumn("Clave Pagare");
         modelPagare.addColumn("Clave contrato");
         modelPagare.addColumn("Clave sucursal");
@@ -135,8 +152,8 @@ public class ControlPane extends JFrame{
     }
 
     public void addDateChooser(){
-        fechaInicial = new JDateChooser("dd/MM/yyyy", "##/##/####", '_');
-        fechaFinal = new JDateChooser("dd/MM/yyyy", "##/##/####", '_');
+        fechaInicial = new JDateChooser("yyyy-MM-dd", "####-##-##", '_');
+        fechaFinal = new JDateChooser("yyyy-MM-dd", "####-##-##", '_');
         GridBagConstraints gb = new GridBagConstraints();
         gb.gridx = 6;
         gb.gridy = 0;
@@ -171,7 +188,43 @@ public class ControlPane extends JFrame{
         }
     }
 
+
+
+    public User getNode() {
+        return node;
+    }
+
+    public DefaultTableModel getModelInversionista() {
+        return modelInversionista;
+    }
+
+    public DefaultTableModel getModelContrato() {
+        return modelContrato;
+    }
+
+    public DefaultTableModel getModelPagare() {
+        return modelPagare;
+    }
+
     public JTextField getCampoRFCInversionistas(){
         return campoRFCInversionistas;
     }
+
+    public JTextField getCampoRFCContratos() {
+        return campoRFCContratos;
+    }
+
+    public JTextField getCampoRFCPagares() {
+        return campoRFCPagares;
+    }
+
+    public JDateChooser getFechaInicial() {
+        return fechaInicial;
+    }
+
+    public JDateChooser getFechaFinal() {
+        return fechaFinal;
+    }
+
+
 }
