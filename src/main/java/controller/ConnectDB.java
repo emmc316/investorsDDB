@@ -9,47 +9,69 @@ public class ConnectDB {
     Connection connection;
     MariaDbDataSource mariaDbDataSource;
 
-    public ConnectDB(){
+    private boolean status = false;
+
+    public ConnectDB() {
         this.mariaDbDataSource = new MariaDbDataSource();
     }
 
-    public void connect(){
+    public void connect() {
         try {
-        this.driver = "jdbc:mariadb://" + this.user.getHostname() + ":" + this.user.getPort() + "/inversiones" + "?user=" + this.user.getUser() + "&password=" + this.user.getPasswd();
-        mariaDbDataSource.setUrl(driver);
-        this.connection = (Connection) mariaDbDataSource.getConnection();
-            }
-            catch (SQLException err){
-                System.out.println("Connection isn't aviable...");
-            }
+            this.driver = "jdbc:mariadb://" + this.user.getHostname() + ":" + this.user.getPort() + "/inversiones" + "?user=" + this.user.getUser() + "&password=" + this.user.getPasswd();
+            mariaDbDataSource.setUrl(driver);
+            this.connection = (Connection) mariaDbDataSource.getConnection();
+            status = true;
+        } catch (SQLException err) {
+            System.out.println("Connection isn't aviable...");
         }
-    public boolean checkConnectiontoNode(){
+    }
+
+    public boolean checkConnectiontoNode() {
         boolean flag = false;
         try {
-                if (this.connection.isValid(1)) {
-                 flag = true;
-                }
+            if (this.connection.isValid(1)) {
+                flag = true;
             }
-            catch(SQLException ex){
-                System.out.println("finding connection...");
-            }
+        } catch (SQLException ex) {
+            status = false;
+        }
         return flag;
     }
 
-    public void disconnect(){
+    public void disconnect() {
         try {
             connection.close();
-        }
-        catch (SQLException ex){
+            status = false;
+        } catch (SQLException ex) {
             ex.printStackTrace();
         }
 
     }
-    public void debugConnection(){
+
+    public void debugConnection() {
         System.out.println(this.connection.__test_host());
     }
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public boolean isStatus() {
+        return status;
+    }
+
+    @Override
+    public String toString() {
+        if (this.status) {
+            return "ConnectDB{" +
+                    ", hostname=" + user.getHostname() + ", user, " + user.getUser() + ", " + user.getNode() + "," +
+                    ", status=" + "online" +
+                    '}';
+        } else {
+            return "ConnectDB{" +
+                    ", hostname=" + user.getHostname() + ", user, " + user.getUser() + "," + user.getNode() + "," +
+                    ", status=" + "down" +
+                    '}';
+        }
     }
 }

@@ -14,7 +14,7 @@ public class User {
     public User(String user, String passwd, String hostname, String port, String node){
         this.user = user;
         this.passwd = passwd;
-        this.hostname = hostname.toUpperCase();
+        this.hostname = hostname.toLowerCase();
         this.port = port;
         this.node = node;
     }

@@ -7,6 +7,8 @@ import model.*;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
+import java.awt.event.ActionListener;
+import java.awt.event.ItemListener;
 
 public class ControlPane extends JFrame {
 
@@ -14,7 +16,6 @@ public class ControlPane extends JFrame {
     public ControlPane(User node){
         this.node = node;
         initComponents();
-        addEvents();
         this.setTitle("Panel de control");
         this.setSize(1000,600);
         this.setLocationRelativeTo(null);
@@ -22,16 +23,16 @@ public class ControlPane extends JFrame {
         this.setVisible(true);
     }
 
+    public void addEventsItems(ItemListener evt){
+        comboConsultarPorInversionistas.addItemListener(evt);
+        comboConsultarPorContratos.addItemListener(evt);
+        comboConsultarPorPagares.addItemListener(evt);
+    }
 
-    ControlPanelController controlPanelController;
-    public void addEvents(){
-        controlPanelController = new ControlPanelController(this);
-        comboConsultarPorInversionistas.addItemListener(controlPanelController);
-        comboConsultarPorContratos.addItemListener(controlPanelController);
-        comboConsultarPorPagares.addItemListener(controlPanelController);
-        botonConsultarInversionistas.addActionListener(controlPanelController);
-        botonConsultarContratos.addActionListener(controlPanelController);
-        botonConsultarPagares.addActionListener(controlPanelController);
+    public void addEventsButtons(ActionListener evt){
+        botonConsultarInversionistas.addActionListener(evt);
+        botonConsultarContratos.addActionListener(evt);
+        botonConsultarPagares.addActionListener(evt);
     }
 
     private JPanel panelBorde;
@@ -131,7 +132,9 @@ public class ControlPane extends JFrame {
         modelInversionista.addColumn("Dirección");
         modelInversionista.addColumn("Email");
         modelInversionista.addColumn("Tipo persona");
+        tablaInversionistas.setEnabled(false);
         tablaInversionistas.updateUI();
+
 
         modelContrato = (DefaultTableModel) tablaContratos.getModel();
         modelContrato.addColumn("Clave contrato");
@@ -139,15 +142,16 @@ public class ControlPane extends JFrame {
         modelContrato.addColumn("RFC");
         modelContrato.addColumn("Monto total");
         modelContrato.addColumn("Status");
+        tablaContratos.setEnabled(false);
         tablaContratos.updateUI();
 
         modelPagare = (DefaultTableModel) tablaPagares.getModel();
         modelPagare.addColumn("Clave Pagare");
         modelPagare.addColumn("Clave contrato");
-        modelPagare.addColumn("Clave sucursal");
         modelPagare.addColumn("Tipo de tasa");
         modelPagare.addColumn("Fecha emisión");
         modelPagare.addColumn("Fecha vencimiento");
+        tablaPagares.setEnabled(false);
         tablaPagares.updateUI();
     }
 
@@ -188,8 +192,6 @@ public class ControlPane extends JFrame {
         }
     }
 
-
-
     public User getNode() {
         return node;
     }
@@ -225,6 +227,4 @@ public class ControlPane extends JFrame {
     public JDateChooser getFechaFinal() {
         return fechaFinal;
     }
-
-
 }

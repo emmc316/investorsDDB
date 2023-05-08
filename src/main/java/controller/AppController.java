@@ -1,5 +1,6 @@
 package controller;
 import model.*;
+import view.ConnectToServers;
 import view.ControlPane;
 import view.Login;
 import view.Appearance;
@@ -7,56 +8,61 @@ import view.Appearance;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.net.InetAddress;
+import java.util.HashMap;
 
 public class AppController {
 
     Login login;
     LoginController lgc;
     ControlPane controlPane;
+    Nodes nodes = new Nodes();
     ArrayList<User> users = new ArrayList<>();
     public AppController(){
-            setUsers();
             Appearance appearance = new Appearance();
-            int pos = getUserByHostname();
+            nodes.initNodes();
+            ConnectToServersController cc = new ConnectToServersController();
+            for(ConnectDB connections: nodes.getNodes().values()) {
+                cc.recieveConnections("https://"+connections.user.getHostname()+":"+connections.user.getPort());
+            }
+            cc.generateModal();
+            cc.init(nodes.statusReport());
+
+            String id = getUserByHostname();
             login = new Login();
-            lgc = new LoginController(users.get(pos).getUser(),users.get(pos).getPasswd(),login);
+            lgc = new LoginController(nodes.getNodes().get(id).user.getUser(),nodes.getNodes().get(id).user.getPasswd(),login);
             login.addButtonEvent(lgc);
            for(;;) {
-               System.out.println(login.isLogged());
+               System.out.println();
                if(login.isLogged()){
                    System.out.println(login.isLogged());
                    login.dispose();
-                   controlPane = new ControlPane(users.get(pos));
+                   controlPane = new ControlPane(nodes.getNodes().get(id).user);
                    break;
                }
            }
-           ControlPanelController controlPanelController = new ControlPanelController(controlPane);
+        ControlPanelController controlPanelController = new ControlPanelController(controlPane);
+        controlPanelController.setNodes(nodes);
+        controlPanelController.setNodoId(id);
+        controlPane.addEventsButtons(controlPanelController);
+        controlPane.addEventsItems(controlPanelController);
+
 
     }
 
-    public void setUsers(){
-        User nodoA = new User("nodoA", "12345", "emmc316", "3309", User.NodeA);
-        User nodoB = new User("nodoB","1234","irving","3306", User.NodeB);
-        User nodoC = new User("nodoC","1234","parra","3306", User.NodeC);
-        //only for debug  User nodoX = new User("NodoX", "12345", "emmcdev", "3306");
-        this.users.add((nodoA));
-        this.users.add((nodoB));
-        this.users.add((nodoC));
-    }
-    public int getUserByHostname(){
-        int pos = 0, i = 0;
-        for (User u:users) {
+    public String getUserByHostname(){
+        String id = "";
+        for (ConnectDB conexions:nodes.getNodes().values()) {
             try {
-                if (u.getHostname().equals(InetAddress.getLocalHost().getHostName().toLowerCase())) {
-                    pos = i;
+                if (conexions.user.getHostname().equals(InetAddress.getLocalHost().getHostName().toLowerCase())) {
+                    id = conexions.user.getNode();
                     break;
                 }
             }catch (UnknownHostException error){
                 System.out.println(" error 404 not Host Aviable");
             }
-            i++;
         }
-        return pos;
+
+        return id;
     }
     public ArrayList<User> getUsers() {
         return users;

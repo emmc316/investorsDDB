@@ -6,15 +6,13 @@ public class PromissoryNote {
 
     private String promissoryNoteCode;
     private String contractCode;
-    private String branchCode;
     private char typeOfRate;
     private LocalDate issuanceDate;
     private LocalDate maturityDate;
 
-    public PromissoryNote(String promissoryNoteCode, String contractCode, String branchCode, char typeOfRate, LocalDate issuanceDate, LocalDate maturityDate) {
+    public PromissoryNote(String promissoryNoteCode, String contractCode, char typeOfRate, LocalDate issuanceDate, LocalDate maturityDate) {
         this.promissoryNoteCode = promissoryNoteCode;
         this.contractCode = contractCode;
-        this.branchCode = branchCode;
         this.typeOfRate = typeOfRate;
         this.issuanceDate = issuanceDate;
         this.maturityDate = maturityDate;
@@ -34,14 +32,6 @@ public class PromissoryNote {
 
     public void setContractCode(String contractCode) {
         this.contractCode = contractCode;
-    }
-
-    public String getBranchCode() {
-        return branchCode;
-    }
-
-    public void setBranchCode(String branchCode) {
-        this.branchCode = branchCode;
     }
 
     public char getTypeOfRate() {
@@ -73,7 +63,6 @@ public class PromissoryNote {
         return "PromissoryNote{" +
                 "promissoryNoteCode='" + promissoryNoteCode + '\'' +
                 ", contractCode='" + contractCode + '\'' +
-                ", branchCode='" + branchCode + '\'' +
                 ", typeOfRate=" + typeOfRate +
                 ", issuanceDate=" + issuanceDate +
                 ", maturityDate=" + maturityDate +

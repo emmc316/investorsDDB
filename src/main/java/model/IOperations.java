@@ -1,11 +1,11 @@
 package model;
 
 public interface IOperations {
-    public void selectInversors(int pos);
-    public Inversor selectInversorByRFC(int pos,String rfc);
-    public void selectContracts(int pos);
-    public Contract selectContractsByClv(int pos,String rfc);
-    public void selectPromissorys(int pos);
-    public  void selectPromissorysByRFC(int pos, String rfc);
-    public void selectByPromissoryDates(int pos,String date1, String date2);
+    public void selectInversors(String key);
+    public Inversor selectInversorByRFC(String key,String rfc);
+    public void selectContracts(String key);
+    public Contract selectContractsByClv(String key,String rfc);
+    public void selectPromissorys(String key);
+    public  void selectPromissorysByRFC(String key, String rfc);
+    public void selectByPromissoryDates(String key,String date1, String date2);
 }

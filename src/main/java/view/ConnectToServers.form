@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="view.ConnectToServers">
+  <grid id="cbd77" binding="contentPane" layout-manager="GridBagLayout">
+    <constraints>
+      <xy x="33" y="56" width="527" height="279"/>
+    </constraints>
+    <properties>
+      <background color="-13355725"/>
+      <font size="20" style="0"/>
+      <foreground color="-13355725"/>
+    </properties>
+    <border type="etched" title="connecting" title-justification="2" title-position="2">
+      <font size="20" style="0"/>
+    </border>
+    <children>
+      <component id="ef45e" class="javax.swing.JProgressBar" binding="loadingBar">
+        <constraints>
+          <grid row="1" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <gridbag weightx="0.0" weighty="0.0" ipadx="100" ipady="5"/>
+        </constraints>
+        <properties>
+          <minimum value="0"/>
+          <string value="0 %"/>
+        </properties>
+      </component>
+      <hspacer id="ebeed">
+        <constraints>
+          <grid row="0" column="2" row-span="2" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <gridbag weightx="0.0" weighty="0.0"/>
+        </constraints>
+      </hspacer>
+      <vspacer id="2246c">
+        <constraints>
+          <grid row="2" column="0" row-span="1" col-span="2" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+          <gridbag weightx="0.0" weighty="0.0"/>
+        </constraints>
+      </vspacer>
+      <component id="bd641" class="javax.swing.JLabel" binding="connectLabel">
+        <constraints>
+          <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <gridbag top="0" left="45" bottom="0" right="0" weightx="0.0" weighty="0.0"/>
+        </constraints>
+        <properties>
+          <font size="20" style="1"/>
+          <text value="Connecting:"/>
+        </properties>
+      </component>
+      <component id="4465e" class="javax.swing.JLabel" binding="info_text">
+        <constraints>
+          <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <gridbag top="0" left="1" bottom="0" right="0" weightx="0.0" weighty="0.0"/>
+        </constraints>
+        <properties>
+          <font size="20" style="1"/>
+          <text value="xd"/>
+        </properties>
+      </component>
+      <component id="ab42e" class="javax.swing.JLabel" binding="img">
+        <constraints>
+          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <gridbag top="0" left="60" bottom="10" right="0" weightx="0.0" weighty="0.0"/>
+        </constraints>
+        <properties>
+          <icon value="imagenes/modalConnecting/db.png"/>
+          <inheritsPopupMenu value="true"/>
+          <opaque value="false"/>
+          <preferredSize width="123" height="120"/>
+          <text value=""/>
+          <visible value="true"/>
+        </properties>
+      </component>
+    </children>
+  </grid>
+</form>
