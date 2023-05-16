@@ -8,7 +8,7 @@ CREATE TABLE inversionista (
    rfcinversionista CHAR(13) NOT NULL,
    nombreinversionista CHAR(50) NOT NULL,
    telefonoinversionista CHAR(10) NOT NULL,
-   direccioninversionista CHAR(30) NOT NULL,
+   direccioninversionista CHAR(60) NOT NULL,
    emailinverionista CHAR(50) NOT NULL,
    tipoPersona BOOLEAN NOT NULL,
    informacionsucursal CHAR(1) NOT NULL,

@@ -34,7 +34,7 @@ public class Operation {
         boolean validated = false;
         for(String nodes: this.getNodes()){
             if(nodes.equals(node)){
-                System.out.println("You are allowed use this queri in:" + node);
+                System.out.println("You are allowed use this query in:" + node);
                 validated = true;
             }
         }

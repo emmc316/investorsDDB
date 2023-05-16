@@ -18,11 +18,11 @@ public class Operations {
 
         operations.put(Operations.SELECT_INVERSORS, new Operation(
                 "SELECT * FROM inversionista",
-                        new String[]{Operation.NODE_A}));
+                        new String[]{Operation.NODE_A,Operation.NODE_B,Operation.NODE_C}));
 
         operations.put(Operations.SELECT_INVERSORS_BY_RFC,new Operation(
                 "SELECT * FROM inversionista WHERE rfcinversionista = ?",
-                new String[]{Operation.NODE_A}));
+                new String[]{Operation.NODE_A,Operation.NODE_B,Operation.NODE_C}));
 
         operations.put(Operations.SELECT_CONTRACTS,new Operation(
                 "SELECT * FROM contrato",
