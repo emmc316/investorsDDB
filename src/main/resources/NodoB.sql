@@ -8,7 +8,7 @@ CREATE TABLE inversionista (
     rfcinversionista CHAR(13) NOT NULL,
     nombreinversionista CHAR(50) NOT NULL,
     telefonoinversionista CHAR(10) NOT NULL,
-    direccioninversionista CHAR(30) NOT NULL,
+    direccioninversionista CHAR(50) NOT NULL,
     emailinverionista CHAR(50) NOT NULL,
     tipoPersona BOOLEAN NOT NULL,
     informacionsucursal CHAR(1) NOT NULL,
@@ -127,3 +127,8 @@ VALUES  ('PB0001','CB001','A','2022-01-16','2022-12-16'),
         ('PB0013','CB004','A','2022-01-28','2022-12-28'),
         ('PB0014','CB005','A','2022-01-29','2022-12-29'),
         ('PB0015','CB001','A','2022-01-30','2022-12-30');
+
+DROP USER IF EXISTS nodoB;
+CREATE USER 'nodoB'@'%' identified by '1234';
+GRANT ALL PRIVILEGES ON inversiones.* TO 'nodoB'@'%';
+FLUSH PRIVILEGES;

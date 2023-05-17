@@ -13,40 +13,48 @@ public class Operations {
     public final static String SELECT_PROMISORYS_BY_RFC = "selectPromisorysByRFC";
     public final static String SELECT_PROMISORY_BY_DATE = "selectPromisoryByDate";
     public final static String SELECT_PROMISORYS_BY_DATES = "selectPromisorysByDates";
+    public final static String SELECT_INFORMATION_REFERENCE = "selectInformationReference";
+
+    //select informacionsucursal from inversionista where rfcinversionista = 'NAPI990201N11';
+
     private HashMap<String,Operation> operations = new HashMap<String,Operation>();
     public Operations(){
 
         operations.put(Operations.SELECT_INVERSORS, new Operation(
                 "SELECT * FROM inversionista",
-                        new String[]{Operation.NODE_A,Operation.NODE_B,Operation.NODE_C}));
+                        new String[]{Operation.NODE_A,Operation.NODE_RA,Operation.NODE_B,Operation.NODE_RB,Operation.NODE_C,Operation.NODE_RC}));
 
         operations.put(Operations.SELECT_INVERSORS_BY_RFC,new Operation(
                 "SELECT * FROM inversionista WHERE rfcinversionista = ?",
-                new String[]{Operation.NODE_A,Operation.NODE_B,Operation.NODE_C}));
+                new String[]{Operation.NODE_A,Operation.NODE_RA,Operation.NODE_B,Operation.NODE_RB,Operation.NODE_C,Operation.NODE_RC}));
 
         operations.put(Operations.SELECT_CONTRACTS,new Operation(
                 "SELECT * FROM contrato",
-                new String[]{Operation.NODE_A,Operation.NODE_B,Operation.NODE_C}));
+                new String[]{Operation.NODE_A,Operation.NODE_RA,Operation.NODE_B,Operation.NODE_RB,Operation.NODE_C,Operation.NODE_RC}));
 
         operations.put(Operations.SELECT_CONTRACTS_BY_CLV,new Operation(
                 "SELECT * FROM contrato WHERE rfcinversionista = ?",
-                new String[]{Operation.NODE_A,Operation.NODE_B,Operation.NODE_C}));
+                new String[]{Operation.NODE_A,Operation.NODE_RA,Operation.NODE_B,Operation.NODE_RB,Operation.NODE_C,Operation.NODE_RC}));
 
         operations.put(Operations.SELECT_PROMISORYS,new Operation(
                 "SELECT * FROM pagare",
-                new String[]{Operation.NODE_A,Operation.NODE_B,Operation.NODE_C}));
+                new String[]{Operation.NODE_A,Operation.NODE_RA,Operation.NODE_B,Operation.NODE_RB,Operation.NODE_C,Operation.NODE_RC}));
 
         operations.put(Operations.SELECT_PROMISORYS_BY_RFC, new Operation(
                 "SELECT DISTINCT C.* FROM contrato A JOIN inversionista B ON A.rfcinversionista = B.rfcinversionista JOIN pagare C ON A.clvcontrato = C.clvcontrato WHERE A.rfcinversionista = ?",
-                new String[]{Operation.NODE_A,Operation.NODE_B,Operation.NODE_C}));
+                new String[]{Operation.NODE_A,Operation.NODE_RA,Operation.NODE_B,Operation.NODE_RB,Operation.NODE_C,Operation.NODE_RC}));
 
         operations.put(Operations.SELECT_PROMISORY_BY_DATE,new Operation(
                 "SELECT * FROM pagare WHERE fechaemision >= ?",
-                new String[]{Operation.NODE_A,Operation.NODE_B,Operation.NODE_C}));
+                new String[]{Operation.NODE_A,Operation.NODE_RA,Operation.NODE_B,Operation.NODE_RB,Operation.NODE_C,Operation.NODE_RC}));
 
         operations.put(Operations.SELECT_PROMISORYS_BY_DATES,new Operation(
-                "SELECT * FROM pagare WHERE fechaemision >= ? AND fechavencimiento <= ?",
-                new String[]{Operation.NODE_A,Operation.NODE_B,Operation.NODE_C}));
+                "SELECT * FROM pagare WHERE fechaemision >= ? AND fechaemision <= ?",
+                new String[]{Operation.NODE_A,Operation.NODE_RA,Operation.NODE_B,Operation.NODE_RB,Operation.NODE_C,Operation.NODE_RC}));
+
+        operations.put(Operations.SELECT_INFORMATION_REFERENCE,new Operation(
+                "SELECT informacionsucursal FROM inversionista WHERE rfcinversionista = ?",
+                new String[]{Operation.NODE_A,Operation.NODE_RA,Operation.NODE_B,Operation.NODE_RB,Operation.NODE_C,Operation.NODE_RC}));
     }
     public Map<String, Operation> getOperations() {
         return operations;

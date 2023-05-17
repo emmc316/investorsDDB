@@ -1,64 +1,64 @@
-DROP DATABASE IF EXISTS inversiones;
+DROP DATABASE IF EXISTS inversionesR;
 
-CREATE DATABASE inversiones;
+CREATE DATABASE inversionesR;
 
-USE inversiones;
+USE inversionesR;
 
 CREATE TABLE inversionista (  
-   rfcinversionista CHAR(13) NOT NULL,
-   nombreinversionista CHAR(50) NOT NULL,
-   telefonoinversionista CHAR(10) NOT NULL,
-   direccioninversionista CHAR(60) NOT NULL,
-   emailinverionista CHAR(50) NOT NULL,
-   tipoPersona BOOLEAN NOT NULL,
-   informacionsucursal CHAR(1) NOT NULL,
-   PRIMARY KEY (rfcinversionista)
+    rfcinversionista CHAR(13) NOT NULL,
+    nombreinversionista CHAR(50) NOT NULL,
+    telefonoinversionista CHAR(10) NOT NULL,
+    direccioninversionista CHAR(50) NOT NULL,
+    emailinverionista CHAR(50) NOT NULL,
+    tipoPersona BOOLEAN NOT NULL,
+    informacionsucursal CHAR(1) NOT NULL,
+    PRIMARY KEY (rfcinversionista)
 );	
 
 CREATE TABLE sucursal (
-   clvsucursal CHAR(1) NOT NULL,
-   nombresucursal CHAR(40) NOT NULL,
-   ubicacionsucursal CHAR(40) NOT NULL,
-   encargadosucursal CHAR(40) NOT NULL,
-   telefonosucursal CHAR(10) NOT NULL,
-   PRIMARY KEY (clvsucursal)
+    clvsucursal CHAR(1) NOT NULL,
+    nombresucursal CHAR(40) NOT NULL,
+    ubicacionsucursal CHAR(40) NOT NULL,
+    encargadosucursal CHAR(40) NOT NULL,
+    telefonosucursal CHAR(10) NOT NULL,
+    PRIMARY KEY (clvsucursal)
 );
 
 CREATE TABLE contrato (
-   clvcontrato CHAR(5) NOT NULL,
-   CHECK (clvcontrato REGEXP '^CA[0-9]{3}$'),
-   clvsucursal CHAR(1) NOT NULL,
-   rfcinversionista CHAR(13) NOT NULL,
-   montototal DOUBLE NOT NULL,
-   status BOOLEAN NOT NULL,
-   PRIMARY KEY (clvcontrato),
-   CONSTRAINT FK_InversionistaRFC FOREIGN KEY (rfcinversionista)
-      REFERENCES inversionista(rfcinversionista),
-   CONSTRAINT FK_clvSucursal FOREIGN KEY (clvsucursal)
-      REFERENCES sucursal(clvsucursal)
+    clvcontrato CHAR(5) NOT NULL,
+    CHECK (clvcontrato REGEXP '^CB[0-9]{3}$'),
+    clvsucursal CHAR(1) NOT NULL,
+    rfcinversionista CHAR(13) NOT NULL,
+    montototal DOUBLE NOT NULL,
+    status BOOLEAN NOT NULL,
+    PRIMARY KEY (clvcontrato),
+    CONSTRAINT FK_InversionistaRFC FOREIGN KEY (rfcinversionista)
+       REFERENCES inversionista(rfcinversionista),
+    CONSTRAINT FK_clvSucursal FOREIGN KEY (clvsucursal)
+       REFERENCES sucursal(clvsucursal)
 );
- 
+
 CREATE TABLE tasa (
-   tipotasa CHAR(1) NOT NULL,
-   interesbruto DOUBLE NOT NULL,
-   issretenido DOUBLE NOT NULL,
-   interesNeto DOUBLE NOT NULL,
-   PRIMARY KEY (tipotasa)
+    tipotasa CHAR(1) NOT NULL,
+    interesbruto DOUBLE NOT NULL,
+    issretenido DOUBLE NOT NULL,
+    interesNeto DOUBLE NOT NULL,
+    PRIMARY KEY (tipotasa)
 );
- 
+
 CREATE TABLE pagare (
-   clvpagare CHAR (6) NOT NULL,
-   CHECK (clvpagare REGEXP '^PA[0-9]{4}$'),
-   clvcontrato CHAR (5) NOT NULL,
-   CHECK (clvcontrato REGEXP '^CA[0-9]{3}$'),
-   tipotasa CHAR (1) NOT NULL,
-   fechaemision DATE NOT NULL,
-   fechavencimiento DATE NOT NULL,
-   PRIMARY KEY (clvpagare),
-   CONSTRAINT FK_clvContrato FOREIGN KEY (clvcontrato)
-       REFERENCES contrato(clvcontrato),
+    clvpagare CHAR (6) NOT NULL,
+    CHECK (clvpagare REGEXP '^PB[0-9]{4}$'),
+    clvcontrato CHAR (5) NOT NULL,
+    CHECK (clvcontrato REGEXP '^CB[0-9]{3}$'),
+    tipotasa CHAR (1) NOT NULL,
+    fechaemision DATE NOT NULL,
+    fechavencimiento DATE NOT NULL,
+    PRIMARY KEY (clvpagare),
+    CONSTRAINT FK_clvContrato FOREIGN KEY (clvcontrato)
+        REFERENCES contrato(clvcontrato),
     CONSTRAINT FK_TipoTasa FOREIGN KEY (tipotasa)
-       REFERENCES tasa(tipotasa)
+        REFERENCES tasa(tipotasa)
 );
 
 INSERT INTO inversionista (rfcinversionista, nombreinversionista, telefonoinversionista, direccioninversionista, emailinverionista, tipoPersona, informacionsucursal)
@@ -94,36 +94,41 @@ VALUES  ('NAPI990201N01','Sofía García López','5551234567','Calle Manzana #12
         ('NAPI990201N30','David Torres González','5551118888','Calle Carambola #6263, Jardines','david.torres@ejemplo.com',true,'C');
 
 INSERT INTO sucursal (clvsucursal, nombresucursal, ubicacionsucursal, encargadosucursal, telefonosucursal)
-VALUES ('A', 'Sucursal-A','Calle Rosas #501, Flores', 'Eric Montalvo Cruz', '2294057624');
+VALUES ('B', 'Sucursal-B','Calle Girasol #601, Flores', 'Irving Naranjo Paredes', '2294523853');
 
 INSERT INTO contrato (clvcontrato, clvsucursal, rfcinversionista, montototal, status)
-VALUES  ('CA001','A','NAPI990201N01',3500.00,true),
-        ('CA002','A','NAPI990201N02',2801.00,true),
-        ('CA003','A','NAPI990201N03',3900.00,true),
-        ('CA004','A','NAPI990201N04',3205.00,true),
-        ('CA005','A','NAPI990201N05',2100.00,true),
-        ('CA006','A','NAPI990201N06',4500.00,true),
-        ('CA007','A','NAPI990201N07',2600.00,true),
-        ('CA008','A','NAPI990201N08',3700.00,true),
-        ('CA009','A','NAPI990201N09',2201.00,true),
-        ('CA010','A','NAPI990201N10',2300.00,true);
+VALUES  ('CB001','B','NAPI990201N11',6789.00,true),
+        ('CB002','B','NAPI990201N12',7890.00,true),
+        ('CB003','B','NAPI990201N13',8901.00,true),
+        ('CB004','B','NAPI990201N14',9012.00,true),
+        ('CB005','B','NAPI990201N15',10123.00,true),
+        ('CB006','B','NAPI990201N16',11111.00,true),
+        ('CB007','B','NAPI990201N17',12345.00,true),
+        ('CB008','B','NAPI990201N18',13579.00,true),
+        ('CB009','B','NAPI990201N19',14785.00,true),
+        ('CB010','B','NAPI990201N20',15987.00,true);
 
 INSERT INTO tasa (tipotasa, interesbruto, issretenido, interesNeto)
 VALUES ('A',0.5,0.15,0.20);
 
 INSERT INTO pagare (clvpagare, clvcontrato, tipotasa, fechaemision, fechavencimiento)
-VALUES  ('PA0001','CA001','A','2022-01-01','2022-12-01'),
-        ('PA0002','CA002','A','2022-01-02','2022-12-02'),
-        ('PA0003','CA003','A','2022-01-03','2022-12-03'),
-        ('PA0004','CA004','A','2022-01-04','2022-12-04'),
-        ('PA0005','CA005','A','2022-01-05','2022-12-05'),
-        ('PA0006','CA006','A','2022-01-06','2022-12-06'),
-        ('PA0007','CA007','A','2022-01-07','2022-12-07'),
-        ('PA0008','CA008','A','2022-01-08','2022-12-08'),
-        ('PA0009','CA009','A','2022-01-09','2022-12-09'),
-        ('PA0010','CA010','A','2022-01-10','2022-12-10'),
-        ('PA0011','CA007','A','2022-01-11','2022-12-11'),
-        ('PA0012','CA001','A','2022-01-12','2022-12-12'),
-        ('PA0013','CA004','A','2022-01-13','2022-12-13'),
-        ('PA0014','CA005','A','2022-01-14','2022-12-14'),
-        ('PA0015','CA001','A','2022-01-15','2022-12-15');
+VALUES  ('PB0001','CB001','A','2022-01-16','2022-12-16'),
+        ('PB0002','CB002','A','2022-01-17','2022-12-17'),
+        ('PB0003','CB003','A','2022-01-18','2022-12-18'),
+        ('PB0004','CB004','A','2022-01-19','2022-12-19'),
+        ('PB0005','CB005','A','2022-01-20','2022-12-20'),
+        ('PB0006','CB006','A','2022-01-21','2022-12-21'),
+        ('PB0007','CB007','A','2022-01-22','2022-12-22'),
+        ('PB0008','CB008','A','2022-01-23','2022-12-23'),
+        ('PB0009','CB009','A','2022-01-24','2022-12-24'),
+        ('PB0010','CB010','A','2022-01-25','2022-12-25'),
+        ('PB0011','CB007','A','2022-01-26','2022-12-26'),
+        ('PB0012','CB001','A','2022-01-27','2022-12-27'),
+        ('PB0013','CB004','A','2022-01-28','2022-12-28'),
+        ('PB0014','CB005','A','2022-01-29','2022-12-29'),
+        ('PB0015','CB001','A','2022-01-30','2022-12-30');
+
+DROP USER IF EXISTS nodoRB;
+CREATE USER 'nodoRB'@'%' identified by '1234';
+GRANT ALL PRIVILEGES ON inversionesR.* TO 'nodoRB'@'%';
+FLUSH PRIVILEGES;

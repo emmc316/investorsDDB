@@ -4,8 +4,11 @@ import java.util.Arrays;
 public class Operation {
 
     public static final String NODE_A = "A";
+    public static final String NODE_RA = "RA";
     public static final String NODE_B = "B";
+    public static final String NODE_RB = "RB";
     public static final String NODE_C = "C";
+    public static final String NODE_RC = "RC";
 
     private String name;
     private String query;

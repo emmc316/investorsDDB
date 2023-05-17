@@ -3,20 +3,25 @@ package model;
 public class User {
 
     public final static String NodeA = "A";
+    public final static String NodeRA = "RA";
     public final static String NodeB = "B";
+    public final static String NodeRB = "RA";
     public final static String NodeC = "C";
+    public final static String NodeRC = "RC";
     private String user;
     private String passwd;
     private String hostname;
     private String port;
     private String node;
+    private String db;
 
-    public User(String user, String passwd, String hostname, String port, String node){
+    public User(String user, String passwd, String hostname, String port, String node, String db){
         this.user = user;
         this.passwd = passwd;
         this.hostname = hostname.toLowerCase();
         this.port = port;
         this.node = node;
+        this.db = db;
     }
 
     public String getUser() {
@@ -53,6 +58,12 @@ public class User {
 
     public String getNode() {
         return node;
+    }
+
+    public void setDB(String db){this.db = db;}
+
+    public String getDB(){
+        return db;
     }
 
     public void setNode(String node) {

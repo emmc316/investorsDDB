@@ -27,6 +27,7 @@ public class ControlPanelController implements ItemListener, IOperations, Action
     private ArrayList<Rate> rates = new ArrayList<Rate>();
     private ArrayList<Contract> contracts = new ArrayList<Contract>();
     private ArrayList<PromissoryNote> promisossorysNotes = new ArrayList<PromissoryNote>();
+    private String informationReference = "";
     private Operations operations = new Operations();
     private Nodes nodes = null;
     private String nodoId = "";
@@ -115,14 +116,16 @@ public class ControlPanelController implements ItemListener, IOperations, Action
             case "contracts":{
                 pane.getModelContrato().setRowCount(0);
                 if(!pane.getCampoRFCContratos().isEnabled()) {
-
-                    selectContracts(nodoId);
+                    //selectContracts("A");
+                    selectContracts("B");
+                    selectContracts("C");
                     for (Contract ctc : contracts) {
                         pane.getModelContrato().addRow(new Object[]{ctc.getCodeContract(), ctc.getBranchCode(), ctc.getRfcInversor(), ctc.getTotalMount()});
                     }
                 }
                 else{
-                    Contract ctc = selectContractsByClv(nodoId,pane.getCampoRFCContratos().getText());
+                    selectInformationReference(this.nodoId, pane.getCampoRFCContratos().getText());
+                    Contract ctc = selectContractsByClv(informationReference,pane.getCampoRFCContratos().getText());
                     pane.getModelContrato().addRow(new Object[]{ctc.getCodeContract(),ctc.getBranchCode(),ctc.getRfcInversor(),ctc.getTotalMount()});
                 }
                 contracts.clear();
@@ -132,13 +135,16 @@ public class ControlPanelController implements ItemListener, IOperations, Action
             case "promissoryNotes":{
                 pane.getModelPagare().setRowCount(0);
                 if(!pane.getFechaFinal().isEnabled() && !pane.getFechaFinal().isEnabled() && !pane.getCampoRFCPagares().isEnabled()) {
-                    selectPromissorys(nodoId);
+                    //selectPromissorys("A");
+                    selectPromissorys("B");
+                    selectPromissorys("C");
                     for (PromissoryNote pro : promisossorysNotes) {
                         pane.getModelPagare().addRow(new Object[]{pro.getPromissoryNoteCode(), pro.getContractCode(), pro.getTypeOfRate(), pro.getIssuanceDate(), pro.getMaturityDate()});
                     }
                 }
                 else if(pane.getCampoRFCPagares().isEnabled() && !pane.getFechaInicial().isEnabled() && !pane.getFechaFinal().isEnabled()) {
-                  selectPromissorysByRFC(nodoId, this.pane.getCampoRFCPagares().getText());
+                    selectInformationReference(this.nodoId, pane.getCampoRFCContratos().getText());
+                    selectPromissorysByRFC(informationReference, this.pane.getCampoRFCPagares().getText());
                     for (PromissoryNote pro : promisossorysNotes) {
                         pane.getModelPagare().addRow(new Object[]{pro.getPromissoryNoteCode(), pro.getContractCode(), pro.getTypeOfRate(), pro.getIssuanceDate(), pro.getMaturityDate()});
                     }
@@ -146,7 +152,9 @@ public class ControlPanelController implements ItemListener, IOperations, Action
 
                 else{
                     SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-                    selectByPromissoryDates(this.nodoId,dateFormat.format(pane.getFechaInicial().getDate()).toString(),dateFormat.format(pane.getFechaFinal().getDate()).toString());
+                    //selectByPromissoryDates("A",dateFormat.format(pane.getFechaInicial().getDate()).toString(),dateFormat.format(pane.getFechaFinal().getDate()).toString());
+                    selectByPromissoryDates("B",dateFormat.format(pane.getFechaInicial().getDate()).toString(),dateFormat.format(pane.getFechaFinal().getDate()).toString());
+                    selectByPromissoryDates("C",dateFormat.format(pane.getFechaInicial().getDate()).toString(),dateFormat.format(pane.getFechaFinal().getDate()).toString());
                     for(PromissoryNote pro: promisossorysNotes) {
                         pane.getModelPagare().addRow(new Object[]{pro.getPromissoryNoteCode(), pro.getContractCode(),  pro.getTypeOfRate(), pro.getIssuanceDate(), pro.getMaturityDate()});
      }
@@ -221,16 +229,25 @@ public class ControlPanelController implements ItemListener, IOperations, Action
                 while (rs.next()) {
                     contracts.add(new Contract(rs.getString(1) ,rs.getString(2),rs.getString(3),rs.getDouble(4),rs.getBoolean(5)));
                 }
-            } catch (SQLException e) {
-                System.out.println(e);
+                System.out.println("Consulta desde el nodo principal");
+            } catch (SQLException | NullPointerException e) {
+                String keyR = "R" + key;
+                try {
+                    Statement stmt = nodes.getNodes().get(keyR).connection.createStatement();
+                    Result rs = (Result) stmt.executeQuery(operations.getOperations().get(Operations.SELECT_CONTRACTS).getQuery());
+                    while (rs.next()) {
+                        contracts.add(new Contract(rs.getString(1) ,rs.getString(2),rs.getString(3),rs.getDouble(4),rs.getBoolean(5)));
+                    }
+                    System.out.println("Consulta desde el nodo respaldo");
+                } catch (SQLException | NullPointerException ex) {
+                    System.out.println(ex);
+                }
             }
         }
     }
 
     @Override
     public Contract selectContractsByClv(String key,String clv) {
-
-
         Contract contractLocal = null;
         if(!clv.isEmpty()) {
             if (operations.getOperations().get(Operations.SELECT_CONTRACTS_BY_CLV).validateQuerieByNode(nodes.getNodes().get(key).user.getNode())) {
@@ -241,8 +258,20 @@ public class ControlPanelController implements ItemListener, IOperations, Action
                     while (rs.next()) {
                         contractLocal = new Contract(rs.getString(1), rs.getString(2), rs.getString(3), rs.getDouble(4), rs.getBoolean(5));
                     }
-                } catch (SQLException e) {
-                    e.printStackTrace();
+                    System.out.println("Consulta desde el nodo principal");
+                } catch (SQLException | NullPointerException e) {
+                    String keyR = "R" + key;
+                    try {
+                        ClientPreparedStatement preparedStatement = (ClientPreparedStatement) nodes.getNodes().get(keyR).connection.prepareStatement(operations.getOperations().get(Operations.SELECT_CONTRACTS_BY_CLV).getQuery());
+                        preparedStatement.setString(1, clv);
+                        Result rs = (Result) preparedStatement.executeQuery();
+                        while (rs.next()) {
+                            contractLocal = new Contract(rs.getString(1), rs.getString(2), rs.getString(3), rs.getDouble(4), rs.getBoolean(5));
+                        }
+                        System.out.println("Consulta desde el nodo secundario");
+                    } catch (SQLException | NullPointerException ex) {
+                        ex.printStackTrace();
+                    }
                 }
             }
         }
@@ -261,8 +290,19 @@ public class ControlPanelController implements ItemListener, IOperations, Action
                 while (rs.next()) {
                     promisossorysNotes.add(new PromissoryNote(rs.getString(1),rs.getString(2),rs.getString(3).charAt(0),LocalDate.parse(rs.getString(4)),LocalDate.parse(rs.getString(5))));
                 }
-            } catch (SQLException e) {
-                e.printStackTrace();
+                System.out.println("Consulta desde el nodo principal");
+            } catch (SQLException | NullPointerException e) {
+                String keyR = "R" + key;
+                try {
+                    ClientPreparedStatement preparedStatement = (ClientPreparedStatement) nodes.getNodes().get(keyR).connection.prepareStatement(operations.getOperations().get(Operations.SELECT_PROMISORYS).getQuery());
+                    Result rs = (Result) preparedStatement.executeQuery();
+                    while (rs.next()) {
+                        promisossorysNotes.add(new PromissoryNote(rs.getString(1),rs.getString(2),rs.getString(3).charAt(0),LocalDate.parse(rs.getString(4)),LocalDate.parse(rs.getString(5))));
+                    }
+                    System.out.println("Consulta desde el nodo secundario");
+                } catch (SQLException | NullPointerException ex) {
+                    e.printStackTrace();
+                }
             }
         }
     }
@@ -278,8 +318,20 @@ public class ControlPanelController implements ItemListener, IOperations, Action
                     while (rs.next()) {
                         promisossorysNotes.add(new PromissoryNote(rs.getString(1), rs.getString(2), rs.getString(3).charAt(0), LocalDate.parse(rs.getString(4)), LocalDate.parse(rs.getString(5))));
                     }
-                } catch (SQLException e) {
-                    e.printStackTrace();
+                    System.out.println("Consulta desde el nodo principal");
+                } catch (SQLException | NullPointerException e) {
+                    String keyR = "R" + key;
+                    try {
+                        ClientPreparedStatement preparedStatement = (ClientPreparedStatement) nodes.getNodes().get(keyR).connection.prepareStatement(operations.getOperations().get(Operations.SELECT_PROMISORYS_BY_RFC).getQuery());
+                        preparedStatement.setString(1, rfc);
+                        Result rs = (Result) preparedStatement.executeQuery();
+                        while (rs.next()) {
+                            promisossorysNotes.add(new PromissoryNote(rs.getString(1), rs.getString(2), rs.getString(3).charAt(0), LocalDate.parse(rs.getString(4)), LocalDate.parse(rs.getString(5))));
+                        }
+                        System.out.println("Consulta desde el nodo secundario");
+                    } catch (SQLException | NullPointerException ex) {
+                        ex.printStackTrace();
+                    }
                 }
             }
         }
@@ -290,7 +342,6 @@ public class ControlPanelController implements ItemListener, IOperations, Action
 
     @Override
     public void selectByPromissoryDates(String key,String date1, String date2) {
-
         if((!date1.isEmpty() && !date2.isEmpty()) || (!date1.isEmpty() && date2.isEmpty()) || (date1.isEmpty() && !date2.isEmpty())) {
             if (operations.getOperations().get(Operations.SELECT_PROMISORYS_BY_DATES).validateQuerieByNode(nodes.getNodes().get(key).user.getNode())) {
                 try {
@@ -301,13 +352,58 @@ public class ControlPanelController implements ItemListener, IOperations, Action
                     while (rs.next()) {
                         promisossorysNotes.add(new PromissoryNote(rs.getString(1), rs.getString(2), rs.getString(3).charAt(0), LocalDate.parse(rs.getString(4)), LocalDate.parse(rs.getString(5))));
                     }
-                } catch (SQLException e) {
-                    e.printStackTrace();
+                    System.out.println("Consulta desde el nodo principal");
+                } catch (SQLException | NullPointerException e) {
+                    String keyR = "R" + key;
+                    try {
+                        ClientPreparedStatement preparedStatement = (ClientPreparedStatement) nodes.getNodes().get(keyR).connection.prepareStatement(operations.getOperations().get(Operations.SELECT_PROMISORYS_BY_DATES).getQuery());
+                        preparedStatement.setString(1, date1);
+                        preparedStatement.setString(2, date2);
+                        Result rs = (Result) preparedStatement.executeQuery();
+                        while (rs.next()) {
+                            promisossorysNotes.add(new PromissoryNote(rs.getString(1), rs.getString(2), rs.getString(3).charAt(0), LocalDate.parse(rs.getString(4)), LocalDate.parse(rs.getString(5))));
+                        }
+                        System.out.println("Consulta desde el nodo secundario");
+                    } catch (SQLException | NullPointerException ex) {
+                        ex.printStackTrace();
+                    }
                 }
             }
         }
         else{
             JOptionPane.showMessageDialog(pane,"The date fields can not be empty!","Error: Field Empty",JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    public void selectInformationReference(String key, String rfc){
+        if(!rfc.isEmpty()) {
+            if (operations.getOperations().get(Operations.SELECT_INFORMATION_REFERENCE).validateQuerieByNode(nodes.getNodes().get(key).user.getNode())) {
+                try {
+                    ClientPreparedStatement preparedStatement = (ClientPreparedStatement) nodes.getNodes().get(key).connection.prepareStatement(operations.getOperations().get(Operations.SELECT_INFORMATION_REFERENCE).getQuery());
+                    preparedStatement.setString(1, rfc);
+                    Result rs = (Result) preparedStatement.executeQuery();
+                    while (rs.next()) {
+                        informationReference = rs.getString(1);
+                    }
+                    System.out.println("Consulta desde el nodo principal");
+                } catch (SQLException | NullPointerException e) {
+                    String keyR = "R" + key;
+                    try {
+                        ClientPreparedStatement preparedStatement = (ClientPreparedStatement) nodes.getNodes().get(keyR).connection.prepareStatement(operations.getOperations().get(Operations.SELECT_INFORMATION_REFERENCE).getQuery());
+                        preparedStatement.setString(1, rfc);
+                        Result rs = (Result) preparedStatement.executeQuery();
+                        while (rs.next()) {
+                            informationReference = rs.getString(1);
+                        }
+                        System.out.println("Consulta desde el nodo secundario");
+                    } catch (SQLException | NullPointerException ex) {
+                        ex.printStackTrace();
+                    }
+                }
+            }
+        }
+        else{
+            JOptionPane.showMessageDialog(pane,"Error: RFC can not be empty!","Error: Empty Field",JOptionPane.ERROR_MESSAGE);
         }
     }
 

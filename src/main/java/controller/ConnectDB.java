@@ -17,7 +17,7 @@ public class ConnectDB {
 
     public void connect() {
         try {
-            this.driver = "jdbc:mariadb://" + this.user.getHostname() + ":" + this.user.getPort() + "/inversiones" + "?user=" + this.user.getUser() + "&password=" + this.user.getPasswd();
+            this.driver = "jdbc:mariadb://" + this.user.getHostname() + ":" + this.user.getPort() + "/" + this.user.getDB() + "?user=" + this.user.getUser() + "&password=" + this.user.getPasswd();
             mariaDbDataSource.setUrl(driver);
             this.connection = (Connection) mariaDbDataSource.getConnection();
             status = true;
