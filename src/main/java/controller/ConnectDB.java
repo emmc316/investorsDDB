@@ -23,6 +23,7 @@ public class ConnectDB {
             status = true;
         } catch (SQLException err) {
             System.out.println("Connection isn't aviable...");
+            status = false;
         }
     }
 

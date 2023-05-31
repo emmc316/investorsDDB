@@ -28,7 +28,7 @@
                 <properties/>
                 <border type="none"/>
                 <children>
-                  <grid id="62893" binding="primeraPestaña" layout-manager="BorderLayout" hgap="0" vgap="0">
+                  <grid id="62893" binding="primeraPestañaC" layout-manager="BorderLayout" hgap="0" vgap="0">
                     <constraints>
                       <tabbedpane title="Inversionistas"/>
                     </constraints>
@@ -110,7 +110,7 @@
                       </grid>
                     </children>
                   </grid>
-                  <grid id="c1633" binding="segundaPestaña" layout-manager="BorderLayout" hgap="0" vgap="0">
+                  <grid id="c1633" binding="segundaPestañaC" layout-manager="BorderLayout" hgap="0" vgap="0">
                     <constraints>
                       <tabbedpane title="Contratos"/>
                     </constraints>
@@ -196,7 +196,7 @@
                       </grid>
                     </children>
                   </grid>
-                  <grid id="9daab" binding="terceraPestaña" layout-manager="BorderLayout" hgap="0" vgap="0">
+                  <grid id="9daab" binding="terceraPestañaC" layout-manager="BorderLayout" hgap="0" vgap="0">
                     <constraints>
                       <tabbedpane title="Pagarés"/>
                     </constraints>
@@ -306,7 +306,347 @@
             </constraints>
             <properties/>
             <border type="none"/>
-            <children/>
+            <children>
+              <tabbedpane id="a9afe" binding="PanelPestañasInsertar">
+                <constraints border-constraint="Center"/>
+                <properties/>
+                <border type="none"/>
+                <children>
+                  <grid id="522e6" binding="primeraPestañaI" layout-manager="GridBagLayout">
+                    <constraints>
+                      <tabbedpane title="Inversionistas"/>
+                    </constraints>
+                    <properties/>
+                    <border type="none"/>
+                    <children>
+                      <component id="c81c3" class="javax.swing.JLabel">
+                        <constraints>
+                          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+                          <gridbag top="0" left="0" bottom="5" right="0" weightx="0.0" weighty="0.0"/>
+                        </constraints>
+                        <properties>
+                          <text value="RFC: "/>
+                        </properties>
+                      </component>
+                      <component id="84d9" class="javax.swing.JLabel">
+                        <constraints>
+                          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+                          <gridbag top="0" left="0" bottom="5" right="0" weightx="0.0" weighty="0.0"/>
+                        </constraints>
+                        <properties>
+                          <text value="Nombre: "/>
+                        </properties>
+                      </component>
+                      <component id="67b9a" class="javax.swing.JLabel">
+                        <constraints>
+                          <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+                          <gridbag top="0" left="0" bottom="5" right="0" weightx="0.0" weighty="0.0"/>
+                        </constraints>
+                        <properties>
+                          <text value="Telefono: "/>
+                        </properties>
+                      </component>
+                      <component id="c68a" class="javax.swing.JLabel">
+                        <constraints>
+                          <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+                          <gridbag top="0" left="0" bottom="5" right="0" weightx="0.0" weighty="0.0"/>
+                        </constraints>
+                        <properties>
+                          <text value="Direccion: "/>
+                        </properties>
+                      </component>
+                      <component id="8cf6a" class="javax.swing.JLabel">
+                        <constraints>
+                          <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+                          <gridbag top="0" left="0" bottom="5" right="0" weightx="0.0" weighty="0.0"/>
+                        </constraints>
+                        <properties>
+                          <text value="Correo: "/>
+                        </properties>
+                      </component>
+                      <component id="f2c83" class="javax.swing.JLabel">
+                        <constraints>
+                          <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+                          <gridbag top="0" left="0" bottom="5" right="0" weightx="0.0" weighty="0.0"/>
+                        </constraints>
+                        <properties>
+                          <text value="Tipo de Persona: "/>
+                        </properties>
+                      </component>
+                      <component id="df90f" class="javax.swing.JTextField" binding="campoNombreII">
+                        <constraints>
+                          <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                            <preferred-size width="150" height="-1"/>
+                          </grid>
+                          <gridbag top="0" left="0" bottom="5" right="0" weightx="0.0" weighty="0.0"/>
+                        </constraints>
+                        <properties/>
+                      </component>
+                      <component id="99b53" class="javax.swing.JTextField" binding="campoRFCII">
+                        <constraints>
+                          <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                            <preferred-size width="150" height="-1"/>
+                          </grid>
+                          <gridbag top="0" left="0" bottom="5" right="0" weightx="0.0" weighty="0.0"/>
+                        </constraints>
+                        <properties>
+                          <columns value="10"/>
+                          <text value=""/>
+                        </properties>
+                      </component>
+                      <component id="dcf8d" class="javax.swing.JTextField" binding="campoTelefonoII">
+                        <constraints>
+                          <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                            <preferred-size width="150" height="-1"/>
+                          </grid>
+                          <gridbag top="0" left="0" bottom="5" right="0" weightx="0.0" weighty="0.0"/>
+                        </constraints>
+                        <properties/>
+                      </component>
+                      <component id="c8550" class="javax.swing.JTextField" binding="campoDireccionII">
+                        <constraints>
+                          <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                            <preferred-size width="150" height="-1"/>
+                          </grid>
+                          <gridbag top="0" left="0" bottom="5" right="0" weightx="0.0" weighty="0.0"/>
+                        </constraints>
+                        <properties/>
+                      </component>
+                      <component id="ad0c4" class="javax.swing.JTextField" binding="campoCorreoII">
+                        <constraints>
+                          <grid row="5" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                            <preferred-size width="150" height="-1"/>
+                          </grid>
+                          <gridbag top="0" left="0" bottom="5" right="0" weightx="0.0" weighty="0.0"/>
+                        </constraints>
+                        <properties/>
+                      </component>
+                      <component id="7592a" class="javax.swing.JComboBox" binding="comboTipoPersonaII">
+                        <constraints>
+                          <grid row="6" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+                          <gridbag top="0" left="0" bottom="5" right="0" weightx="0.0" weighty="0.0"/>
+                        </constraints>
+                        <properties/>
+                      </component>
+                      <component id="2cf99" class="javax.swing.JLabel" binding="etiquetaTitulo">
+                        <constraints>
+                          <grid row="0" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                          <gridbag top="0" left="0" bottom="5" right="0" weightx="0.0" weighty="0.0"/>
+                        </constraints>
+                        <properties>
+                          <horizontalAlignment value="0"/>
+                          <horizontalTextPosition value="0"/>
+                          <text value="Ingresar nuevo usuario"/>
+                        </properties>
+                      </component>
+                      <component id="34a39" class="javax.swing.JButton" binding="botonAgregarII">
+                        <constraints>
+                          <grid row="7" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                          <gridbag top="0" left="0" bottom="5" right="0" weightx="0.0" weighty="0.0"/>
+                        </constraints>
+                        <properties>
+                          <name value="agregarII"/>
+                          <text value="Agregar"/>
+                        </properties>
+                      </component>
+                    </children>
+                  </grid>
+                  <grid id="2486e" binding="segundaPestañaI" layout-manager="GridBagLayout">
+                    <constraints>
+                      <tabbedpane title="Contratos"/>
+                    </constraints>
+                    <properties/>
+                    <border type="none"/>
+                    <children>
+                      <component id="6e17c" class="javax.swing.JLabel">
+                        <constraints>
+                          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+                          <gridbag weightx="0.0" weighty="0.0"/>
+                        </constraints>
+                        <properties>
+                          <text value="Clave del contrato: "/>
+                        </properties>
+                      </component>
+                      <component id="31d3b" class="javax.swing.JLabel">
+                        <constraints>
+                          <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+                          <gridbag weightx="0.0" weighty="0.0"/>
+                        </constraints>
+                        <properties>
+                          <text value="Monto: "/>
+                        </properties>
+                      </component>
+                      <component id="dd75d" class="javax.swing.JTextField" binding="campoContratoIC">
+                        <constraints>
+                          <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                            <preferred-size width="150" height="-1"/>
+                          </grid>
+                          <gridbag top="0" left="0" bottom="5" right="0" weightx="0.0" weighty="0.0"/>
+                        </constraints>
+                        <properties>
+                          <columns value="10"/>
+                        </properties>
+                      </component>
+                      <component id="c46fb" class="javax.swing.JTextField" binding="campoMontoIC">
+                        <constraints>
+                          <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                            <preferred-size width="150" height="-1"/>
+                          </grid>
+                          <gridbag top="0" left="0" bottom="5" right="0" weightx="0.0" weighty="0.0"/>
+                        </constraints>
+                        <properties/>
+                      </component>
+                      <component id="64f96" class="javax.swing.JButton" binding="botonAgregarIC">
+                        <constraints>
+                          <grid row="4" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                          <gridbag weightx="0.0" weighty="0.0"/>
+                        </constraints>
+                        <properties>
+                          <name value="agregarIC"/>
+                          <text value="Agregar"/>
+                        </properties>
+                      </component>
+                      <component id="21695" class="javax.swing.JLabel">
+                        <constraints>
+                          <grid row="0" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                          <gridbag top="0" left="0" bottom="5" right="0" weightx="0.0" weighty="0.0"/>
+                        </constraints>
+                        <properties>
+                          <text value="Ingresar un nuevo contrato"/>
+                        </properties>
+                      </component>
+                      <component id="23a85" class="javax.swing.JLabel">
+                        <constraints>
+                          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+                          <gridbag weightx="0.0" weighty="0.0"/>
+                        </constraints>
+                        <properties>
+                          <text value="RFC del inversionista: "/>
+                        </properties>
+                      </component>
+                      <component id="d6189" class="javax.swing.JTextField" binding="campoRCFIC">
+                        <constraints>
+                          <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                            <preferred-size width="150" height="-1"/>
+                          </grid>
+                          <gridbag top="0" left="0" bottom="5" right="0" weightx="0.0" weighty="0.0"/>
+                        </constraints>
+                        <properties/>
+                      </component>
+                    </children>
+                  </grid>
+                  <grid id="f7203" binding="terceraPestañaI" layout-manager="GridBagLayout">
+                    <constraints>
+                      <tabbedpane title="Pagares"/>
+                    </constraints>
+                    <properties/>
+                    <border type="none"/>
+                    <children>
+                      <component id="4a7df" class="javax.swing.JLabel">
+                        <constraints>
+                          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+                          <gridbag weightx="0.0" weighty="0.0"/>
+                        </constraints>
+                        <properties>
+                          <text value="Clave del pagare: "/>
+                        </properties>
+                      </component>
+                      <component id="3e15e" class="javax.swing.JLabel">
+                        <constraints>
+                          <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+                          <gridbag weightx="0.0" weighty="0.0"/>
+                        </constraints>
+                        <properties>
+                          <text value="Clave del contrato: "/>
+                        </properties>
+                      </component>
+                      <component id="ca7e3" class="javax.swing.JLabel">
+                        <constraints>
+                          <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+                          <gridbag weightx="0.0" weighty="0.0"/>
+                        </constraints>
+                        <properties>
+                          <text value="Tipo de tasa: "/>
+                        </properties>
+                      </component>
+                      <component id="c9a67" class="javax.swing.JLabel">
+                        <constraints>
+                          <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+                          <gridbag weightx="0.0" weighty="0.0"/>
+                        </constraints>
+                        <properties>
+                          <text value="Fecha de vencimiento: "/>
+                        </properties>
+                      </component>
+                      <component id="de816" class="javax.swing.JTextField" binding="campoContratoIP">
+                        <constraints>
+                          <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                            <preferred-size width="150" height="-1"/>
+                          </grid>
+                          <gridbag top="0" left="0" bottom="5" right="0" weightx="0.0" weighty="0.0"/>
+                        </constraints>
+                        <properties/>
+                      </component>
+                      <component id="823cc" class="javax.swing.JTextField" binding="campoPagareIP">
+                        <constraints>
+                          <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                            <preferred-size width="150" height="-1"/>
+                          </grid>
+                          <gridbag top="0" left="0" bottom="5" right="0" weightx="0.0" weighty="0.0"/>
+                        </constraints>
+                        <properties>
+                          <columns value="10"/>
+                        </properties>
+                      </component>
+                      <component id="ac562" class="javax.swing.JButton" binding="botonAgregarIP">
+                        <constraints>
+                          <grid row="6" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                          <gridbag weightx="0.0" weighty="0.0"/>
+                        </constraints>
+                        <properties>
+                          <name value="agregarIP"/>
+                          <text value="Agregar"/>
+                        </properties>
+                      </component>
+                      <component id="c82d5" class="javax.swing.JLabel">
+                        <constraints>
+                          <grid row="0" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                          <gridbag top="0" left="0" bottom="5" right="0" weightx="0.0" weighty="0.0"/>
+                        </constraints>
+                        <properties>
+                          <text value="Ingresar un nuevo pagare"/>
+                        </properties>
+                      </component>
+                      <component id="9852c" class="javax.swing.JComboBox" binding="comboTasaIP">
+                        <constraints>
+                          <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+                          <gridbag top="0" left="0" bottom="5" right="0" weightx="0.0" weighty="0.0"/>
+                        </constraints>
+                        <properties/>
+                      </component>
+                      <component id="4941d" class="javax.swing.JLabel">
+                        <constraints>
+                          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                          <gridbag weightx="0.0" weighty="0.0"/>
+                        </constraints>
+                        <properties>
+                          <text value="RFC del inversionista: "/>
+                        </properties>
+                      </component>
+                      <component id="b210c" class="javax.swing.JTextField" binding="campoRFCIP">
+                        <constraints>
+                          <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                            <preferred-size width="150" height="-1"/>
+                          </grid>
+                          <gridbag top="0" left="0" bottom="5" right="0" weightx="0.0" weighty="0.0"/>
+                        </constraints>
+                        <properties/>
+                      </component>
+                    </children>
+                  </grid>
+                </children>
+              </tabbedpane>
+            </children>
           </grid>
           <grid id="4ab0c" binding="panelActualizar" layout-manager="BorderLayout" hgap="0" vgap="0">
             <constraints>
@@ -314,7 +654,301 @@
             </constraints>
             <properties/>
             <border type="none"/>
-            <children/>
+            <children>
+              <tabbedpane id="8f288" binding="panelPestañasActualizar">
+                <constraints border-constraint="Center"/>
+                <properties/>
+                <border type="none"/>
+                <children>
+                  <grid id="6a926" binding="primeraPestañaA" layout-manager="GridBagLayout">
+                    <constraints>
+                      <tabbedpane title="Inversionista"/>
+                    </constraints>
+                    <properties/>
+                    <border type="none"/>
+                    <children>
+                      <component id="e64b4" class="javax.swing.JLabel">
+                        <constraints>
+                          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+                          <gridbag weightx="0.0" weighty="0.0"/>
+                        </constraints>
+                        <properties>
+                          <text value="RFC del inversionista: "/>
+                        </properties>
+                      </component>
+                      <component id="f546e" class="javax.swing.JLabel">
+                        <constraints>
+                          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+                          <gridbag weightx="0.0" weighty="0.0"/>
+                        </constraints>
+                        <properties>
+                          <text value="Telefono: "/>
+                        </properties>
+                      </component>
+                      <component id="e8bd4" class="javax.swing.JLabel">
+                        <constraints>
+                          <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+                          <gridbag weightx="0.0" weighty="0.0"/>
+                        </constraints>
+                        <properties>
+                          <text value="Direccion: "/>
+                        </properties>
+                      </component>
+                      <component id="fa293" class="javax.swing.JLabel">
+                        <constraints>
+                          <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+                          <gridbag weightx="0.0" weighty="0.0"/>
+                        </constraints>
+                        <properties>
+                          <text value="Correo: "/>
+                        </properties>
+                      </component>
+                      <component id="b366c" class="javax.swing.JTextField" binding="campoRFCAI">
+                        <constraints>
+                          <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                            <preferred-size width="150" height="-1"/>
+                          </grid>
+                          <gridbag top="0" left="0" bottom="5" right="0" weightx="0.0" weighty="0.0"/>
+                        </constraints>
+                        <properties>
+                          <columns value="10"/>
+                        </properties>
+                      </component>
+                      <component id="bfd1b" class="javax.swing.JTextField" binding="campoTelefonoAI">
+                        <constraints>
+                          <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                            <preferred-size width="150" height="-1"/>
+                          </grid>
+                          <gridbag top="0" left="0" bottom="5" right="0" weightx="0.0" weighty="0.0"/>
+                        </constraints>
+                        <properties/>
+                      </component>
+                      <component id="9c960" class="javax.swing.JTextField" binding="campoDireccionAI">
+                        <constraints>
+                          <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                            <preferred-size width="150" height="-1"/>
+                          </grid>
+                          <gridbag top="0" left="0" bottom="5" right="0" weightx="0.0" weighty="0.0"/>
+                        </constraints>
+                        <properties/>
+                      </component>
+                      <component id="dc160" class="javax.swing.JTextField" binding="campoCorreoAI">
+                        <constraints>
+                          <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                            <preferred-size width="150" height="-1"/>
+                          </grid>
+                          <gridbag top="0" left="0" bottom="5" right="0" weightx="0.0" weighty="0.0"/>
+                        </constraints>
+                        <properties/>
+                      </component>
+                      <component id="6e484" class="javax.swing.JButton" binding="botonActualizarAI">
+                        <constraints>
+                          <grid row="5" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                          <gridbag weightx="0.0" weighty="0.0"/>
+                        </constraints>
+                        <properties>
+                          <name value="actualizarAI"/>
+                          <text value="Actualizar"/>
+                        </properties>
+                      </component>
+                      <component id="3d23b" class="javax.swing.JLabel">
+                        <constraints>
+                          <grid row="0" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                          <gridbag top="0" left="0" bottom="5" right="0" weightx="0.0" weighty="0.0"/>
+                        </constraints>
+                        <properties>
+                          <text value="Actualizar la informacion de un inversionista"/>
+                        </properties>
+                      </component>
+                    </children>
+                  </grid>
+                  <grid id="546c0" binding="segundaPestañaA" layout-manager="GridBagLayout">
+                    <constraints>
+                      <tabbedpane title="Contrato"/>
+                    </constraints>
+                    <properties/>
+                    <border type="none"/>
+                    <children>
+                      <component id="b9a63" class="javax.swing.JLabel">
+                        <constraints>
+                          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+                          <gridbag weightx="0.0" weighty="0.0"/>
+                        </constraints>
+                        <properties>
+                          <text value="Clave del contrato: "/>
+                        </properties>
+                      </component>
+                      <component id="d2b26" class="javax.swing.JLabel">
+                        <constraints>
+                          <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+                          <gridbag weightx="0.0" weighty="0.0"/>
+                        </constraints>
+                        <properties>
+                          <text value="Monto: "/>
+                        </properties>
+                      </component>
+                      <component id="12a2e" class="javax.swing.JTextField" binding="campoContratoAC">
+                        <constraints>
+                          <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                            <preferred-size width="150" height="-1"/>
+                          </grid>
+                          <gridbag top="0" left="0" bottom="5" right="0" weightx="0.0" weighty="0.0"/>
+                        </constraints>
+                        <properties>
+                          <columns value="10"/>
+                        </properties>
+                      </component>
+                      <component id="2edb7" class="javax.swing.JTextField" binding="campoMontoAC">
+                        <constraints>
+                          <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                            <preferred-size width="150" height="-1"/>
+                          </grid>
+                          <gridbag top="0" left="0" bottom="5" right="0" weightx="0.0" weighty="0.0"/>
+                        </constraints>
+                        <properties>
+                          <columns value="10"/>
+                        </properties>
+                      </component>
+                      <component id="b7288" class="javax.swing.JLabel">
+                        <constraints>
+                          <grid row="0" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                          <gridbag top="0" left="0" bottom="5" right="0" weightx="0.0" weighty="0.0"/>
+                        </constraints>
+                        <properties>
+                          <text value="Actualizar informacion de un contrato"/>
+                        </properties>
+                      </component>
+                      <component id="52eb" class="javax.swing.JLabel">
+                        <constraints>
+                          <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+                          <gridbag weightx="0.0" weighty="0.0"/>
+                        </constraints>
+                        <properties>
+                          <text value="Status: "/>
+                        </properties>
+                      </component>
+                      <component id="f1889" class="javax.swing.JComboBox" binding="comboStatusAC">
+                        <constraints>
+                          <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+                          <gridbag top="0" left="0" bottom="5" right="0" weightx="0.0" weighty="0.0"/>
+                        </constraints>
+                        <properties/>
+                      </component>
+                      <component id="918ab" class="javax.swing.JButton" binding="botonActualizarAC">
+                        <constraints>
+                          <grid row="5" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                          <gridbag weightx="0.0" weighty="0.0"/>
+                        </constraints>
+                        <properties>
+                          <name value="actualizarAC"/>
+                          <text value="Actualizar"/>
+                        </properties>
+                      </component>
+                      <component id="51789" class="javax.swing.JLabel">
+                        <constraints>
+                          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                          <gridbag weightx="0.0" weighty="0.0"/>
+                        </constraints>
+                        <properties>
+                          <text value="RFC del inversionista: "/>
+                        </properties>
+                      </component>
+                      <component id="ece60" class="javax.swing.JTextField" binding="campoRFCAC">
+                        <constraints>
+                          <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                            <preferred-size width="150" height="-1"/>
+                          </grid>
+                          <gridbag top="0" left="0" bottom="5" right="0" weightx="0.0" weighty="0.0"/>
+                        </constraints>
+                        <properties/>
+                      </component>
+                    </children>
+                  </grid>
+                  <grid id="85684" binding="terceraPestañaA" layout-manager="GridBagLayout">
+                    <constraints>
+                      <tabbedpane title="Pagare"/>
+                    </constraints>
+                    <properties/>
+                    <border type="none"/>
+                    <children>
+                      <component id="a2832" class="javax.swing.JLabel">
+                        <constraints>
+                          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+                          <gridbag weightx="0.0" weighty="0.0"/>
+                        </constraints>
+                        <properties>
+                          <text value="Clave del pagare: "/>
+                        </properties>
+                      </component>
+                      <component id="18fd4" class="javax.swing.JLabel">
+                        <constraints>
+                          <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+                          <gridbag weightx="0.0" weighty="0.0"/>
+                        </constraints>
+                        <properties>
+                          <text value="Tipo de tasa: "/>
+                        </properties>
+                      </component>
+                      <component id="2585b" class="javax.swing.JTextField" binding="campoPagareAP">
+                        <constraints>
+                          <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                            <preferred-size width="150" height="-1"/>
+                          </grid>
+                          <gridbag top="0" left="0" bottom="5" right="0" weightx="0.0" weighty="0.0"/>
+                        </constraints>
+                        <properties/>
+                      </component>
+                      <component id="befc9" class="javax.swing.JLabel">
+                        <constraints>
+                          <grid row="0" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                          <gridbag top="0" left="0" bottom="5" right="0" weightx="0.0" weighty="0.0"/>
+                        </constraints>
+                        <properties>
+                          <text value="Actualizar informacion de pagare: "/>
+                        </properties>
+                      </component>
+                      <component id="ee6ef" class="javax.swing.JButton" binding="botonActualizarAP">
+                        <constraints>
+                          <grid row="4" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                          <gridbag weightx="0.0" weighty="0.0"/>
+                        </constraints>
+                        <properties>
+                          <name value="actualizarAP"/>
+                          <text value="Actualizar"/>
+                        </properties>
+                      </component>
+                      <component id="8ecf6" class="javax.swing.JComboBox" binding="comboTasa">
+                        <constraints>
+                          <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+                          <gridbag top="0" left="0" bottom="5" right="0" weightx="0.0" weighty="0.0"/>
+                        </constraints>
+                        <properties/>
+                      </component>
+                      <component id="5d46e" class="javax.swing.JLabel">
+                        <constraints>
+                          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                          <gridbag weightx="0.0" weighty="0.0"/>
+                        </constraints>
+                        <properties>
+                          <text value="RFC del inversionista: "/>
+                        </properties>
+                      </component>
+                      <component id="f4024" class="javax.swing.JTextField" binding="campoRFCAP">
+                        <constraints>
+                          <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                            <preferred-size width="150" height="-1"/>
+                          </grid>
+                          <gridbag top="0" left="0" bottom="5" right="0" weightx="0.0" weighty="0.0"/>
+                        </constraints>
+                        <properties>
+                          <columns value="10"/>
+                        </properties>
+                      </component>
+                    </children>
+                  </grid>
+                </children>
+              </tabbedpane>
+            </children>
           </grid>
           <grid id="7d2d2" binding="panelEliminar" layout-manager="BorderLayout" hgap="0" vgap="0">
             <constraints>
@@ -322,7 +956,197 @@
             </constraints>
             <properties/>
             <border type="none"/>
-            <children/>
+            <children>
+              <tabbedpane id="a34b0" binding="panelPestañasEliminar">
+                <constraints border-constraint="Center"/>
+                <properties>
+                  <name value=""/>
+                </properties>
+                <border type="none"/>
+                <children>
+                  <grid id="57604" binding="primeraPestañaE" layout-manager="GridBagLayout">
+                    <constraints>
+                      <tabbedpane title="Inversionista"/>
+                    </constraints>
+                    <properties/>
+                    <border type="none"/>
+                    <children>
+                      <component id="ff04e" class="javax.swing.JLabel">
+                        <constraints>
+                          <grid row="0" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                          <gridbag top="0" left="0" bottom="5" right="0" weightx="0.0" weighty="0.0"/>
+                        </constraints>
+                        <properties>
+                          <text value="Eliminar a un inversionista"/>
+                        </properties>
+                      </component>
+                      <component id="b2e28" class="javax.swing.JLabel">
+                        <constraints>
+                          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+                          <gridbag weightx="0.0" weighty="0.0"/>
+                        </constraints>
+                        <properties>
+                          <text value="RFC del inversionista: "/>
+                        </properties>
+                      </component>
+                      <component id="bfbd5" class="javax.swing.JTextField" binding="campoRFCEI">
+                        <constraints>
+                          <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                            <preferred-size width="150" height="-1"/>
+                          </grid>
+                          <gridbag top="0" left="0" bottom="5" right="0" weightx="0.0" weighty="0.0"/>
+                        </constraints>
+                        <properties>
+                          <columns value="10"/>
+                        </properties>
+                      </component>
+                      <component id="b0ddb" class="javax.swing.JButton" binding="botonEliminarEI">
+                        <constraints>
+                          <grid row="2" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                          <gridbag weightx="0.0" weighty="0.0"/>
+                        </constraints>
+                        <properties>
+                          <name value="eliminarEI"/>
+                          <text value="Eliminar"/>
+                        </properties>
+                      </component>
+                    </children>
+                  </grid>
+                  <grid id="45c6" binding="segundaPestañaE" layout-manager="GridBagLayout">
+                    <constraints>
+                      <tabbedpane title="Contrato"/>
+                    </constraints>
+                    <properties/>
+                    <border type="none"/>
+                    <children>
+                      <component id="4e5ee" class="javax.swing.JLabel">
+                        <constraints>
+                          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                          <gridbag weightx="0.0" weighty="0.0"/>
+                        </constraints>
+                        <properties>
+                          <text value="Clave del contrato: "/>
+                        </properties>
+                      </component>
+                      <component id="d4bca" class="javax.swing.JTextField" binding="campoContratoEC">
+                        <constraints>
+                          <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                            <preferred-size width="150" height="-1"/>
+                          </grid>
+                          <gridbag top="0" left="0" bottom="5" right="0" weightx="0.0" weighty="0.0"/>
+                        </constraints>
+                        <properties>
+                          <columns value="10"/>
+                        </properties>
+                      </component>
+                      <component id="e212f" class="javax.swing.JButton" binding="botonEliminarEC">
+                        <constraints>
+                          <grid row="3" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                          <gridbag weightx="0.0" weighty="0.0"/>
+                        </constraints>
+                        <properties>
+                          <name value="eliminarEC"/>
+                          <text value="Eliminar"/>
+                        </properties>
+                      </component>
+                      <component id="d581" class="javax.swing.JLabel">
+                        <constraints>
+                          <grid row="0" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                          <gridbag top="0" left="0" bottom="5" right="0" weightx="0.0" weighty="0.0"/>
+                        </constraints>
+                        <properties>
+                          <text value="Eliminar un contrato"/>
+                        </properties>
+                      </component>
+                      <component id="3af28" class="javax.swing.JLabel">
+                        <constraints>
+                          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                          <gridbag weightx="0.0" weighty="0.0"/>
+                        </constraints>
+                        <properties>
+                          <text value="RFC del inversionista: "/>
+                        </properties>
+                      </component>
+                      <component id="1cbdf" class="javax.swing.JTextField" binding="campoRFCEC">
+                        <constraints>
+                          <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                            <preferred-size width="150" height="-1"/>
+                          </grid>
+                          <gridbag weightx="0.0" weighty="0.0"/>
+                        </constraints>
+                        <properties/>
+                      </component>
+                    </children>
+                  </grid>
+                  <grid id="30cf5" binding="terceraPestañaE" layout-manager="GridBagLayout">
+                    <constraints>
+                      <tabbedpane title="Pagre"/>
+                    </constraints>
+                    <properties/>
+                    <border type="none"/>
+                    <children>
+                      <component id="b56db" class="javax.swing.JLabel">
+                        <constraints>
+                          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                          <gridbag weightx="0.0" weighty="0.0"/>
+                        </constraints>
+                        <properties>
+                          <text value="Clave del pagare: "/>
+                        </properties>
+                      </component>
+                      <component id="4e8d3" class="javax.swing.JTextField" binding="campoPagareEP">
+                        <constraints>
+                          <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                            <preferred-size width="150" height="-1"/>
+                          </grid>
+                          <gridbag top="0" left="0" bottom="5" right="0" weightx="0.0" weighty="0.0"/>
+                        </constraints>
+                        <properties>
+                          <columns value="10"/>
+                        </properties>
+                      </component>
+                      <component id="df123" class="javax.swing.JLabel">
+                        <constraints>
+                          <grid row="0" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                          <gridbag top="0" left="0" bottom="5" right="0" weightx="0.0" weighty="0.0"/>
+                        </constraints>
+                        <properties>
+                          <text value="Eliminar un pagare"/>
+                        </properties>
+                      </component>
+                      <component id="87450" class="javax.swing.JButton" binding="botonEliminarEP">
+                        <constraints>
+                          <grid row="3" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                          <gridbag weightx="0.0" weighty="0.0"/>
+                        </constraints>
+                        <properties>
+                          <name value="eliminarEP"/>
+                          <text value="Eliminar"/>
+                        </properties>
+                      </component>
+                      <component id="307bd" class="javax.swing.JLabel">
+                        <constraints>
+                          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                          <gridbag weightx="0.0" weighty="0.0"/>
+                        </constraints>
+                        <properties>
+                          <text value="RFC del inversionista: "/>
+                        </properties>
+                      </component>
+                      <component id="24a5b" class="javax.swing.JTextField" binding="campoRFCEP">
+                        <constraints>
+                          <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                            <preferred-size width="150" height="-1"/>
+                          </grid>
+                          <gridbag weightx="0.0" weighty="0.0"/>
+                        </constraints>
+                        <properties/>
+                      </component>
+                    </children>
+                  </grid>
+                </children>
+              </tabbedpane>
+            </children>
           </grid>
         </children>
       </tabbedpane>

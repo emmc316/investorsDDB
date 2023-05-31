@@ -1,7 +1,6 @@
 package view;
 
 import com.toedter.calendar.JDateChooser;
-import controller.ControlPanelController;
 import model.*;
 
 import javax.swing.*;
@@ -33,6 +32,15 @@ public class ControlPane extends JFrame {
         botonConsultarInversionistas.addActionListener(evt);
         botonConsultarContratos.addActionListener(evt);
         botonConsultarPagares.addActionListener(evt);
+        botonAgregarII.addActionListener(evt);
+        botonAgregarIC.addActionListener(evt);
+        botonAgregarIP.addActionListener(evt);
+        botonActualizarAI.addActionListener(evt);
+        botonActualizarAC.addActionListener(evt);
+        botonActualizarAP.addActionListener(evt);
+        botonEliminarEI.addActionListener(evt);
+        botonEliminarEC.addActionListener(evt);
+        botonEliminarEP.addActionListener(evt);
     }
 
     private JPanel panelBorde;
@@ -44,13 +52,13 @@ public class ControlPane extends JFrame {
     private JPanel segundaPestañaNorte;
     private JComboBox comboConsultarPorContratos;
     private JTabbedPane panelPestañasConsultar;
-    private JPanel segundaPestaña;
+    private JPanel segundaPestañaC;
     private JLabel etiquetaRFCContratos;
     private JTextField campoRFCContratos;
     private JLabel etiquetaConsultarPorContratos;
     private JButton botonConsultarContratos;
     private JPanel segundaPestañaCentro;
-    private JPanel primeraPestaña;
+    private JPanel primeraPestañaC;
     private JPanel primeraPestañaNorte;
     private JComboBox comboConsultarPorInversionistas;
     private JTextField campoRFCInversionistas;
@@ -58,7 +66,7 @@ public class ControlPane extends JFrame {
     private JLabel etiquetaConsultarPorInversionistas;
     private JLabel etiquetaRFCInversionistas;
     private JPanel primeraPestañaCentro;
-    private JPanel terceraPestaña;
+    private JPanel terceraPestañaC;
     private JPanel terceraPestañaNorte;
     private JComboBox comboConsultarPorPagares;
     private JTextField campoRFCPagares;
@@ -74,9 +82,63 @@ public class ControlPane extends JFrame {
     private JPanel terceraPestañaCentro;
     private JScrollPane panelBarrasPagares;
     private JTable tablaPagares;
+    private JTabbedPane PanelPestañasInsertar;
+    private JPanel primeraPestañaI;
+    private JPanel segundaPestañaI;
+    private JPanel terceraPestañaI;
+    private JTextField campoRFCII;
+    private JTextField campoNombreII;
+    private JTextField campoTelefonoII;
+    private JTextField campoDireccionII;
+    private JTextField campoCorreoII;
+    private JComboBox comboTipoPersonaII;
+    private JButton botonAgregarII;
+    private JLabel etiquetaTitulo;
+    private JTextField campoContratoIC;
+    private JTextField campoRCFIC;
+    private JTextField campoMontoIC;
+    private JButton botonAgregarIC;
+    private JTextField campoContratoIP;
+    private JTextField campoPagareIP;
+    private JTextField campoVencimientoIP;
+    private JButton botonAgregarIP;
+    private JTabbedPane panelPestañasActualizar;
+    private JTextField campoRFCAI;
+    private JTextField campoTelefonoAI;
+    private JTextField campoDireccionAI;
+    private JTextField campoCorreoAI;
+    private JButton botonActualizarAI;
+    private JTextField campoContratoAC;
+    private JTextField campoMontoAC;
+    private JComboBox comboStatusAC;
+    private JButton botonActualizarAC;
+    private JTextField campoPagareAP;
+    private JButton botonActualizarAP;
+    private JComboBox comboTasa;
+    private JComboBox comboTasaIP;
+    private JPanel primeraPestañaA;
+    private JPanel segundaPestañaA;
+    private JPanel terceraPestañaA;
+    private JTabbedPane panelPestañasEliminar;
+    private JPanel primeraPestañaE;
+    private JPanel segundaPestañaE;
+    private JPanel terceraPestañaE;
+    private JTextField campoPagareEP;
+    private JButton botonEliminarEP;
+    private JTextField campoRFCEI;
+    private JButton botonEliminarEI;
+    private JTextField campoContratoEC;
+    private JButton botonEliminarEC;
+    private JTextField campoRFCIP;
+    private JTextField campoRFCAC;
+    private JTextField campoRFCAP;
+    private JTextField campoRFCEC;
+    private JTextField campoRFCEP;
 
     private JDateChooser fechaInicial;
     private JDateChooser fechaFinal;
+
+    private JDateChooser fechaVencimiento;
 
     private DefaultTableModel modelInversionista;
     private DefaultTableModel modelContrato;
@@ -121,7 +183,23 @@ public class ControlPane extends JFrame {
         modelPagares.addElement("En un intervalo de fechas");
         comboConsultarPorPagares.updateUI();
 
+        DefaultComboBoxModel modelPersona = (DefaultComboBoxModel) comboTipoPersonaII.getModel();
+        modelPersona.addElement("Fisica");
+        modelPersona.addElement("Moral");
+        comboTipoPersonaII.updateUI();
 
+        DefaultComboBoxModel modelTasa = (DefaultComboBoxModel) comboTasa.getModel();
+        modelTasa.addElement("A");
+        comboTasa.updateUI();
+
+        DefaultComboBoxModel modelTasaIP = (DefaultComboBoxModel) comboTasaIP.getModel();
+        modelTasaIP.addElement("A");
+        comboTasaIP.updateUI();
+
+        DefaultComboBoxModel modelStatus = (DefaultComboBoxModel) comboStatusAC.getModel();
+        modelStatus.addElement("Activo");
+        modelStatus.addElement("Concluido");
+        comboStatusAC.updateUI();
     }
 
     private void addTableColumns(){
@@ -158,6 +236,7 @@ public class ControlPane extends JFrame {
     public void addDateChooser(){
         fechaInicial = new JDateChooser("yyyy-MM-dd", "####-##-##", '_');
         fechaFinal = new JDateChooser("yyyy-MM-dd", "####-##-##", '_');
+        fechaVencimiento = new JDateChooser("yyyy-MM-dd", "####-##-##", '_');
         GridBagConstraints gb = new GridBagConstraints();
         gb.gridx = 6;
         gb.gridy = 0;
@@ -173,6 +252,12 @@ public class ControlPane extends JFrame {
         terceraPestañaNorte.add(fechaFinal, gb);
         fechaInicial.setEnabled(false);
         fechaFinal.setEnabled(false);
+        gb.gridx = 1;
+        gb.gridy = 5;
+        gb.insets = new Insets(0,0,5,0);
+        gb.ipadx = 30;
+        gb.anchor = GridBagConstraints.WEST;
+        terceraPestañaI.add(fechaVencimiento,gb);
     }
 
     public void enableComponents(int value, boolean enable){
@@ -226,5 +311,133 @@ public class ControlPane extends JFrame {
 
     public JDateChooser getFechaFinal() {
         return fechaFinal;
+    }
+
+    public JTextField getCampoRFCII() {
+        return campoRFCII;
+    }
+
+    public JTextField getCampoNombreII() {
+        return campoNombreII;
+    }
+
+    public JTextField getCampoTelefonoII() {
+        return campoTelefonoII;
+    }
+
+    public JTextField getCampoDireccionII() {
+        return campoDireccionII;
+    }
+
+    public JTextField getCampoCorreoII() {
+        return campoCorreoII;
+    }
+
+    public JComboBox getComboTipoPersonaII() {
+        return comboTipoPersonaII;
+    }
+
+    public JTextField getCampoContratoIC() {
+        return campoContratoIC;
+    }
+
+    public JTextField getCampoRCFIC() {
+        return campoRCFIC;
+    }
+
+    public JTextField getCampoMontoIC() {
+        return campoMontoIC;
+    }
+
+    public JTextField getCampoContratoIP() {
+        return campoContratoIP;
+    }
+
+    public JTextField getCampoPagareIP() {
+        return campoPagareIP;
+    }
+
+    public JTextField getCampoVencimientoIP() {
+        return campoVencimientoIP;
+    }
+
+    public JTextField getCampoRFCAI() {
+        return campoRFCAI;
+    }
+
+    public JTextField getCampoTelefonoAI() {
+        return campoTelefonoAI;
+    }
+
+    public JTextField getCampoDireccionAI() {
+        return campoDireccionAI;
+    }
+
+    public JTextField getCampoCorreoAI() {
+        return campoCorreoAI;
+    }
+
+    public JTextField getCampoContratoAC() {
+        return campoContratoAC;
+    }
+
+    public JTextField getCampoMontoAC() {
+        return campoMontoAC;
+    }
+
+    public JComboBox getComboStatusAC() {
+        return comboStatusAC;
+    }
+
+    public JTextField getCampoPagareAP() {
+        return campoPagareAP;
+    }
+
+    public JComboBox getComboTasa() {
+        return comboTasa;
+    }
+
+    public JComboBox getComboTasaIP() {
+        return comboTasaIP;
+    }
+
+    public JTextField getCampoPagareEP() {
+        return campoPagareEP;
+    }
+
+    public JTextField getCampoRFCEI() {
+        return campoRFCEI;
+    }
+
+    public JTextField getCampoContratoEC() {
+        return campoContratoEC;
+    }
+
+    public JDateChooser getFechaVencimiento() {
+        return fechaVencimiento;
+    }
+
+    public JTextField getCampoRFCIP() {
+        return campoRFCIP;
+    }
+
+    public JTextField getCampoRFCAC() {
+        return campoRFCAC;
+    }
+
+    public JTextField getCampoRFCAP() {
+        return campoRFCAP;
+    }
+
+    public JTextField getCampoRFCEC() {
+        return campoRFCEC;
+    }
+
+    public JTextField getCampoRFCEP() {
+        return campoRFCEP;
+    }
+
+    private void createUIComponents() {
+        // TODO: place custom component creation code here
     }
 }
